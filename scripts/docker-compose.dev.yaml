@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  app:
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./frontend/app:/usr/src/app'
+    command: [ "tail", "-f", "/dev/stdout" ]
+
+  api:
+    environment:
+      DEBUG: 'yes'
+
+    ports:
+      - '3000:3000'

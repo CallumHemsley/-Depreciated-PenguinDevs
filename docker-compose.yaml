@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+      
+  app:
+    build: './frontend/app'
+    volumes:
+      - './frontend/app:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    environment:
+      - ' NODE_ENV=${NODE_ENV}'
+    links:
+      - api
+
+
+  api:
+    build: './backend/api'
+    volumes:
+      - './backend/api:/app:ro'
+    working_dir: '/app'
+    environment:
+      DATASTORE_URI: 'postgres://postgres@datastore'
+
+  datastore:
+    build: './backend/datastore'
+    volumes:
+      - 'subsunday-data:/var/lib/postgresql/data'
+
+volumes:
+  subsunday-data: {}
+  shared-build:
+    driver: local

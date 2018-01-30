@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  populate-datastore:
+    extends:
+      service: 'api'
+    working_dir: '/app/src'
+    command: [
+      'python', '-c',
+      'from main import make_datastore;
+       make_datastore().populate()'
+    ]
