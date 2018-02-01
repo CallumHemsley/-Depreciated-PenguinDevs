@@ -7,7 +7,6 @@ services:
       - '5000:5000'
     volumes:
       - ./frontend/app:/usr/src/app'
-    command: [ "tail", "-f", "/dev/stdout" ]
 
   api:
     environment:

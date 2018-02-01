@@ -6,7 +6,7 @@ services:
     build: './frontend/app'
     volumes:
       - './frontend/app:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      #- '/usr/src/app/node_modules'
     environment:
       - ' NODE_ENV=${NODE_ENV}'
     links:
