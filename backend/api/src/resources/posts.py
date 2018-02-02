@@ -1,5 +1,4 @@
 from flask_restful import Resource, reqparse, marshal_with, fields
-
 from http import HTTPStatus
 
 from models  import Post
@@ -10,7 +9,6 @@ post_fields = {
     'title': fields.String,
     'body': fields.String,
 }
-
 post_parser = reqparse.RequestParser() #kind of like validation, with extra stuff that can be nice.
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('body', type=str, required=True)
@@ -22,13 +20,14 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
     @marshal_with(post_fields) #apply field filtering.
     def get(self):
         return self.session.query(Post).all()
-
+    
+    @marshal_with(post_fields)
     def post(self):
         args = post_parser.parse_args()
 
         by_title = (Post.title == args['title'])
         post = self.session.query(Post).filter(by_title).first()
-
+        print("i get here\n\n\n")
         if post:
             post.title = args['title']
             status = HTTPStatus.OK
