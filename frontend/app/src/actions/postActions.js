@@ -40,10 +40,7 @@ export const fetchPosts = () => {
     return (dispatch) => {
 
         //Return a promise (think try/catch but for async)
-        return Axios({
-            method: 'get',
-            url: apiUrl
-        })
+        return Axios.get(apiUrl)
             .then(response => {
                 //Dispatch another action to consume data.
                 dispatch(fetchPostsSuccess(response.data))
