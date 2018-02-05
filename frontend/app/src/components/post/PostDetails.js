@@ -9,11 +9,11 @@ const PostDetails = ({post}) => {
                 </a>
             </div>
             <div>
-                <h4 className="media-heading">post.title</h4>
+                <h4 className="media-heading">{post.title}</h4>
                 <ul>
                     <li><stron>Description: </stron> post.description</li>
                     <li><stron>Posted at: </stron> post.postedAt</li>
-                    <li><stron>BodyOfText: </stron> post.bodyOfText</li>
+                    <li><stron>Body: </stron> {post.body}</li>
                     <br/>
                 </ul>
             </div>

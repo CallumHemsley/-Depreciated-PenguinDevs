@@ -4,16 +4,13 @@ import PostDetails from './PostDetails';
 import * as postActions from '../../actions/postActions';
 
 class PostDetailsPage extends React.Component {
-    // constructor(props, context) {
-    //     super(props, context);
-    // }
     componentDidMount(){
-        this.props.fetchPostById(this.props.params.id);
+        this.props.fetchPostById(this.props.match.params.number);
     }
     render(){
         return (
             <div>
-                <h1>Post Details page. </h1>
+                <h1>Post Details page. {this.props.match.params.number} </h1>
         {/*pass post prop down to PostDetails*/}
                 <PostDetails post={this.props.post}/>
             </div>
