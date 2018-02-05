@@ -20,7 +20,7 @@ class Posts extends React.Component{
                 return(
                   <tr key={i}>
                     <li>{b.title}</li>
-                    <li><Link to={`/post/${b.id}`}>View</Link></li>
+                    <li><Link to={`/posts/${b.id}`}>View</Link></li>
                   </tr>
                 )
               })}
