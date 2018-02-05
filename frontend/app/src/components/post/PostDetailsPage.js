@@ -1,18 +1,51 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import PostDetails from './PostDetails';
 import * as postActions from '../../actions/postActions';
+import Disqus from '../post/Disqus';
+import ReactMarkdown from 'react-markdown';
+import '../css/clear.css';
+import '../css/common.css';
+import '../css/sm-clean.css';
+import '../css/SideBar.css';
+import '../css/froala_blocks.css';
 
 class PostDetailsPage extends React.Component {
     componentDidMount(){
         this.props.fetchPostById(this.props.match.params.number);
     }
+    handleNewComment(comment) {
+		console.log(comment.text);
+	}
     render(){
         return (
-            <div>
-                <h1>Post Details page. {this.props.match.params.number} </h1>
-        {/*pass post prop down to PostDetails*/}
-                <PostDetails post={this.props.post}/>
+            <div id="content" className="site-content center-relative">
+                <div className="single-post-wrapper content-1070 center-relative">
+                    <article className="center-relative">
+                        <h1 className="entry-title">
+                            {this.props.post.title}
+                        </h1>
+                        <div className="post-info content-660 center-relative">
+                            <div className="cat-links">
+                                <ul>
+                                    <li><a href="/">Science</a></li>
+                                </ul>
+                            </div>
+                            <div className="entry-date published">February 12, 2016</div>
+                            <div className="clear"></div>
+                        </div>
+                        <div className="post-full-width">
+                            <img src="http://placehold.it/200/450" alt=""/>
+                        </div>
+                        <div className="entry-content">
+                            <div className="content-wrap content-660 center-relative">
+                                <ReactMarkdown
+                                    source={this.props.post.body} />
+                            </div>
+                        </div>
+                        <div className="clear"></div>
+                    </article>
+                    <Disqus shortname="test" title="title" url="penguindevs"/>
+                </div>
             </div>
         );
     }

@@ -10,6 +10,7 @@ post_fields = {
     'body': fields.String,
 }
 post_parser = reqparse.RequestParser() #kind of like validation, with extra stuff that can be nice.
+post_parser.add_argument('id', type=int, required = False)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('body', type=str, required=True)
 
@@ -27,7 +28,6 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
 
         by_title = (Post.title == args['title'])
         post = self.session.query(Post).filter(by_title).first()
-        print("i get here\n\n\n")
         if post:
             post.title = args['title']
             status = HTTPStatus.OK
