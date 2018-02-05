@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_restful import Api
 
 from os import environ
-from resources import PostsResource
+from resources import PostsResource, PostResource
 from datastore import DataStore
 
 def make_datastore():
@@ -21,6 +21,9 @@ def main():
         resource_class_kwargs=store_context) #pass through constructor to lossely couple each other. 
         #the value of resource_class_kwargs is forwarded and passed into my resource implementation's constructor. (PostsResource)
         #So i'm injecting the store_context dependency into PostsResource
+
+    api.add_resource(PostResource, '/posts/<int:post_id>',
+        resource_class_kwargs=store_context)
     
     debug_mode = environ.get('DEBUG') is not None #bool value
 
