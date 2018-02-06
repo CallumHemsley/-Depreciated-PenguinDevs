@@ -11,7 +11,16 @@ import '../css/froala_blocks.css';
 const auth = new AuthService();
 
 class NavBar extends Component  {
+    login() {
+        auth.login();
+    }
+    
+    logout() {
+        auth.logout();
+    }
+
     render() {
+        const { isAuthenticated } = auth;
         return (
             <div id="content" className="site-content">
                 <header>
@@ -33,12 +42,11 @@ class NavBar extends Component  {
                                 <li className="nav-item active">
                                     <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
                                 </li>
-                                {/* <li className="nav-item">
+                                <li className="nav-item">
                                     {
-                                        ( isLoggedIn() ) ? <a className="nav-link" href="/writepost">Write Post</a> : '' 
+                                        ( isAuthenticated() ) ? <a className="nav-link" href="/writepost">Write Post</a> : '' 
                                     }
-                                </li> */}
-                                <button className="nav-link" onClick={() => auth.login()}>Log In</button> 
+                                </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href="/posts">Posts</a>
                                 </li>
@@ -58,11 +66,11 @@ class NavBar extends Component  {
                                 <li className="nav-item">
                                 <a className="nav-link" href="https://www.froala.com"><i className="fa fa-slack"></i></a>
                                 </li>
-                                {/* <li className="nav-item">
+                                <li className="nav-item">
                                     {
-                                        (isLoggedIn()) ? ( <button className="nav-link" onClick={() => logout()}>Log out </button> ) : ( <button className="nav-link" onClick={() => login()}>Log In</button> )
+                                        (isAuthenticated()) ? ( <button className="nav-link" onClick={this.logout.bind(this)}>Log out </button> ) : ( <button className="nav-link" onClick={this.login.bind(this)}>Log In</button> )
                                     }
-                                </li> */}
+                                </li>
 
                             </ul>
                         </nav>
