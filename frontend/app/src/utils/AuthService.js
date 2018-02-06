@@ -9,13 +9,15 @@ export default class Auth {
         this.isAuthenticated = this.isAuthenticated.bind(this);
     }
 
+    requestedScopes = 'openid profile read:messages write:messages';
+
     auth0 = new auth0.WebAuth({
         domain: 'penguindevs.eu.auth0.com',
         clientID: 'npUUguUiNi7EYwyEAR48pc8OpK1HqNPa',
         redirectUri: 'http://localhost:5000/callback',
         audience: 'https://penguindevs.eu.auth0.com/userinfo',
         responseType: 'token id_token',
-        scope: 'openid'
+        scope: this.requestedScopes
     });
 
     login() {
@@ -35,13 +37,20 @@ export default class Auth {
     }
 
     setSession(authResult) {
+        const scopes = authResult.scope || this.requestedScopes || '';
         // Set the time that the access token will expire at
         let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
+        localStorage.setItem('scopes', JSON.stringify(scopes));
         // navigate to the home route
         history.replace('/');
+    }
+
+    userHasScopes(){
+        const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
+        return this.scopes.every(scope => grantedScopes.includes(scope));
     }
 
     logout() {
