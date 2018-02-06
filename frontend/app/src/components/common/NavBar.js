@@ -68,7 +68,7 @@ class NavBar extends Component  {
                                 </li>
                                 <li className="nav-item">
                                     {
-                                        (isAuthenticated()) ? ( <button className="nav-link" onClick={this.logout.bind(this)}>Log out </button> ) : ( <button className="nav-link" onClick={this.login.bind(this)}>Log In</button> )
+                                        (isAuthenticated()) ? ( <button className="nav-link" onClick={this.logout.bind(this)}>Log out </button> ) : ( '' )
                                     }
                                 </li>
 

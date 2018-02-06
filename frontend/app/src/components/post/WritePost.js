@@ -34,12 +34,18 @@ class WritePost extends React.Component{
       return(
         <div class="container">
           {
-            isAuthenticated() && (
+            isAuthenticated() ? (
               <div>
                 <h3> New Post </h3>
                 <PostForm value={this.state.markdownSrc} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
                 <ReactMarkdown
                   source={this.state.markdownSrc} />
+              </div>
+            )
+            :
+            (
+              <div>
+                {auth.login()}
               </div>
             )
           }
