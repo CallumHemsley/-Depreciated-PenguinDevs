@@ -3,14 +3,14 @@ import * as actionTypes from '../actions/types';
 export const postsReducer= (state = [], action) => {
     switch (action.type) {
       case actionTypes.CREATE_POST_SUCCESS:
-      return [
-        ...state, //Use "..." to pass the whole props object of state
-        Object.assign({}, action.post)
-      ];
+        return [
+          ...state, //Use "..." to pass the whole props object of state
+          Object.assign({}, action.post)
+        ];
       case actionTypes.FETCH_POSTS_SUCCESS:
-            return action.posts;
+        return action.posts;
       default:
-            return state;
+        return state;
     }
   }; //Return the state as it is from server when action is dispatched.
 
@@ -20,6 +20,11 @@ export const postReducer = (state= [], action) => {
     //handle fetch by id.
     case actionTypes.FETCH_POST_BY_ID_SUCCESS:
       return action.post;
+    case actionTypes.PUT_POST_SUCCESS:
+      return [
+        ...state,
+        Object.assign({}, action.post)
+      ];
     default:
       return state;
   }

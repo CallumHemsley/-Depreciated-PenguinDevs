@@ -4,6 +4,7 @@ import AuthService from '../utils/AuthService';
 import Home from '../components/common/HomePage';
 import Post from '../components/post/Post';
 import WritePost from '../components/post/WritePost';
+import EditPost from '../components/post/EditPost';
 import CallBack from '../components/common/CallBack';
 import Login from '../components/common/Login';
 const auth = new AuthService();
@@ -27,6 +28,13 @@ const routes = (
                     <Redirect to="/login"/>
                 ) : (
                     <WritePost auth={auth} {...props} />
+                )
+            )} />
+            <Route path="/editpost/:number" render={(props) => (
+                !auth.isAuthenticated() ? (
+                    <Redirect to="/login"/>
+                ) : (
+                    <EditPost auth={auth} {...props} />
                 )
             )} />
             <Route path="/callback" render={(props) => {

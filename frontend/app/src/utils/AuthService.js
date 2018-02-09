@@ -48,9 +48,9 @@ export default class Auth {
         history.replace('/');
     }
 
-    userHasScopes(){
+    userHasScopes(scopes){
         const grantedScopes = JSON.parse(localStorage.getItem('scopes')).split(' ');
-        return this.scopes.every(scope => grantedScopes.includes(scope));
+        return scopes.every(scope => grantedScopes.includes(scope));
     }
 
     logout() {

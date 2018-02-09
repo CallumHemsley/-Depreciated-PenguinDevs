@@ -25,6 +25,37 @@ export const fetchPostById = (postId) => {
     };
 };
 
+
+//Sync action
+export const putPostById = (post) => {
+    return(dispatch) => {
+        return Axios({
+            method: 'put',
+            url: (apiUrl + '/' + post.id),
+            data: {
+                id: post.id,
+                title: post.title,
+                body: post.body
+            }
+        })
+            .then(response => {
+                //dispatch async action.
+                dispatch(putPostByIdSuccess(response.data))
+            })
+            .catch(error => {
+                throw(error);
+            });
+    }
+}
+
+//async
+export const putPostByIdSuccess = (post) => {
+    return {
+        type: 'PUT_POST_SUCCESS',
+        post
+    }
+};
+
 //Sync action
 export const fetchPostsSuccess = (posts) => {
     return { //_SUCCESS used to keep track of state of actions
