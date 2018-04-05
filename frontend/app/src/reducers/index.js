@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 import * as types from '../actions/types';
 import {postsReducer, postReducer} from './postReducers';
-
+import { reducer as formReducer } from 'redux-form';
 const filter = (state = '', action) => {
   switch(action.type) {
     case types.FILTER:
@@ -16,6 +16,7 @@ const filter = (state = '', action) => {
 const rootReducer = combineReducers({
   posts: postsReducer,
   post: postReducer,
+  form: formReducer,
   filter,
   routing
 });

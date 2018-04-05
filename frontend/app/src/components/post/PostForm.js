@@ -1,12 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Formik } from 'formik';
 import '../css/SideBar.css';
 const PostForm = (props) => {
     //collector variables.
     let titleInput, bodyInput = null;
-
     return(
-        <form className="contact-form" onSubmit={e => {
+        <Formik
+            initialValues={{
+                title: '',
+                body: '',
+            }}
+            validate={values => {
+                let errors = {};
+                if (!values.title) {
+                    errors.title = 'Required';
+                } 
+                else if (values.title.length > 15) {
+                    errors.title = 'Too long title';
+                }
+                return errors;
+            }}
+            render={({
+                values,
+                errors,
+                touched,
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                isSubmitting,
+            }) => (
+                <form onSubmit={e => {
+                    e.preventDefault();
+                    var input = {
+                        title: titleInput.value,
+                        body: bodyInput.value
+                    }
+                    props.submitPost(input);
+                    e.target.reset();
+                }}>
+                    <input
+                        type="title"
+                        name="title"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.title} />
+                </form>
+            )}
+
+
+        /**<form className="contact-form" onSubmit={e => {
             e.preventDefault();
             //Assemble data into an object.
             var input = {
@@ -40,12 +83,8 @@ const PostForm = (props) => {
                     />
                 </div>
             </div>
-            <div>
-                <div>
-                    <button class="btn mt-4">Submit</button>
-                </div>
-            </div>
-        </form>
+        
+        </form>**/
     );
 };
 
