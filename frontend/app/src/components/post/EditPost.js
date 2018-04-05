@@ -17,10 +17,12 @@ class EditPost extends React.Component {
 		this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
 		this.state = {
 			markdownSrc: this.props.post.body
-		};
+        };
+        console.log(this.props.post.body);
 	}
     componentDidMount(){
         this.props.fetchPostById(this.props.match.params.number);
+        this.setState({markdownSrc: this.props.post.body})
     }
     handleMarkdownChange(evt){
 		this.setState({markdownSrc: evt.target.value})
