@@ -50,6 +50,7 @@ const PostForm = (props) => {
                     />
                 </div>
             </div>
+            <button class="btn mt-4">Submit</button>
         
         </form>
     );

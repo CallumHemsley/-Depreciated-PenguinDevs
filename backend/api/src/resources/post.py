@@ -7,12 +7,16 @@ from models  import Post
 post_fields = {
     'id': fields.Integer,
     'title': fields.String,
+    'category': fields.String,
     'body': fields.String,
+    'date': fields.String,
 }
 post_parser = reqparse.RequestParser() #kind of like validation, with extra stuff that can be nice.
 post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
+post_parser.add_argument('category', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
+post_parser.add_argument('date', type=str, required=True)
 
 class PostResource(Resource): #resource contains all the shit u need to get, post etc.
     def __init__(self, store):

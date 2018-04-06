@@ -98,11 +98,11 @@ export const createPost = (post) => {
             method: 'post',
             url: apiUrl,
             data: {
-                id: post.id,
+                //id: post.id,
                 title: post.title,
                 category: post.category,
                 body: post.body,
-                date: date
+                date: String(date)
             }
         })
             .then(response => {

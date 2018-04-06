@@ -33,12 +33,12 @@ class WritePost extends React.Component{
         <div class="container">
           <h3> New Post </h3>
           <PostForm value={this.state.markdownSrc} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
-          <button class="btn mt-4">Submit</button>
           <ReactMarkdown
             source={this.state.markdownSrc} />
         </div>
       )
     }
+    
 }
 
 //State from store to props.
