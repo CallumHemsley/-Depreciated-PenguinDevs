@@ -1,4 +1,5 @@
 import * as actionTypes from './types';
+import moment from 'moment';
 //Use axios to make http request
 import Axios from 'axios';
 //API URL
@@ -91,6 +92,7 @@ export const createPostSuccess = (post) => {
 };
 //thunk updates the data on the server and return new post. For sake of UX, just append the post to existing posts state.
 export const createPost = (post) => {
+    var date = moment().format('MMMM Do, YYYY');
     return (dispatch) => {
         return Axios({
             method: 'post',
@@ -98,7 +100,9 @@ export const createPost = (post) => {
             data: {
                 id: post.id,
                 title: post.title,
-                body: post.body
+                category: post.category,
+                body: post.body,
+                date: date
             }
         })
             .then(response => {
