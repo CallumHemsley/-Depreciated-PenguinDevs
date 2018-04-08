@@ -5,7 +5,7 @@ from models  import Post
 
 #what data to render in response.
 post_fields = {
-    #'id': fields.Integer,
+    'id': fields.Integer,
     'title': fields.String,
     'category': fields.String,
     'body': fields.String,
