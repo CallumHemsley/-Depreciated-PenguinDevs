@@ -4,7 +4,6 @@ import moment from 'moment';
 import Axios from 'axios';
 //API URL
 var apiUrl = "http://localhost:3000/posts";
-
 //Sync action
 export const fetchPostByIdSuccess = (post) => {
     return {
@@ -36,6 +35,7 @@ export const putPostById = (post) => {
             data: {
                 id: post.id,
                 title: post.title,
+                category: post.category,
                 body: post.body
             }
         })

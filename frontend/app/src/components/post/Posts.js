@@ -21,6 +21,7 @@ class Posts extends React.Component{
                   <tr key={i}>
                     <li>{b.title}</li>
                     <li><Link to={`/posts/${b.id}`}>View</Link></li>
+                    <li><Link to={`/editpost/${b.id}`}>Edit</Link></li>
                   </tr>
                 )
               })}

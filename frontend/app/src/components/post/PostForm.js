@@ -23,6 +23,7 @@ const PostForm = (props) => {
                 <label>Title: </label>
                 <div>
                     <input type="text"
+                    value={props.valueTitle}
                     name="title"
                     ref={node => titleInput = node}
                     />
@@ -33,6 +34,7 @@ const PostForm = (props) => {
                 <label>Category: </label>
                 <div>
                     <input type="text"
+                    value={props.valueCategory}
                     name="category"
                     ref={node => categoryInput = node}
                     />
@@ -43,7 +45,7 @@ const PostForm = (props) => {
                 <label>Body of text: </label>
                 <div>
                     <textarea type="text"
-                    value={props.value}
+                    value={props.valueBody}
                     onChange={props.onChange}
                     name="body"
                     ref={node => bodyInput = node}

@@ -53,7 +53,8 @@ class PostDetailsPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        post: state.post
+        post: state.post,
+        initialValues: state.post
     };
 }
 
