@@ -48,7 +48,7 @@ const PostForm = (props) => {
                 <div>
                     <textarea type="text"
                     value={props.valueBody}
-                    onChange={props.handleMarkdownChange}
+                    onChange={props.handleBodyChange}
                     name="body"
                     ref={node => bodyInput = node}
                     />

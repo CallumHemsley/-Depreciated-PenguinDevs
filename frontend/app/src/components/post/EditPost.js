@@ -14,13 +14,14 @@ import '../css/froala_blocks.css';
 class EditPost extends React.Component {
     constructor(props){
         super(props);
-        this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
+        this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
 		this.state = {
+            id: '',
             title: '',
             category: '',
-			markdownSrc: ''
+			body: ''
         }; 
     }
     componentDidMount(){
@@ -28,8 +29,9 @@ class EditPost extends React.Component {
             .then((post) => {
                 if (this.props.post.title != undefined){
                     this.setState({
+                        id: this.props.post.id,
                         title: this.props.post.title,
-                        markdownSrc: this.props.post.body,
+                        body: this.props.post.body,
                         category: this.props.post.category
                     })
                 }
@@ -40,16 +42,16 @@ class EditPost extends React.Component {
       //  if (this.props.post.title != undefined){
         //    this.setState({
           //      title: this.props.post.title,
-            //    markdownSrc: this.props.post.body,
+            //    body: this.props.post.body,
               //  category: this.props.post.category
             //})
        // }
     //}
-    handleMarkdownChange(evt){
+    handleBodyChange(evt){
         console.log(evt.target.value);
         this.setState(
             {
-                markdownSrc: evt.target.value,
+                body: evt.target.value,
             })
     }
     handleTitleChange(evt){
@@ -69,15 +71,21 @@ class EditPost extends React.Component {
 
 
 	submitPost(input){
-        this.props.editPost(input);
+        this.props.editPost(this.state);
     }
     render(){
         return (
             <div id="content" className="site-content center-relative">
                 {this.props.post.title}
-                <PostForm valueTitle={this.state.title} valueCategory={this.state.category} valueBody={this.state.markdownSrc} handleTitleChange={this.handleTitleChange} handleMarkdownChange={this.handleMarkdownChange} handleCategoryChange={this.handleCategoryChange} submitPost={this.submitPost.bind(this)} />
+                <PostForm valueTitle={this.state.title}
+                 valueCategory={this.state.category} 
+                 valueBody={this.state.body} 
+                 handleTitleChange={this.handleTitleChange} 
+                 handleBodyChange={this.handleBodyChange} 
+                 handleCategoryChange={this.handleCategoryChange} 
+                 submitPost={this.submitPost.bind(this)} />
                 <ReactMarkdown
-                    source={this.state.markdownSrc} />
+                    source={this.state.body} />
             </div>  
         );
     }
@@ -93,11 +101,13 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         //Triger the ajax request we setup in actions.
-        fetchPostById: postId => dispatch(postActions.fetchPostById(postId))
+        fetchPostById: postId => dispatch(postActions.fetchPostById(postId)),
+		editPost: post => dispatch(postActions.putPostById(post))
     };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPost);
+
 
 
 
@@ -138,22 +148,22 @@ class EditPost extends React.Component {
 		this.state = {
             title: '',
             category: '',
-			markdownSrc: ''
+			body: ''
         };
     }
     getPostWithId(){
         this.props.fetchPostById(this.props.match.params.number);
         this.setState({title: this.props.post.title});
         this.setState({category: this.props.post.category});
-        this.setState({markdownSrc: this.props.post.body});
+        this.setState({body: this.props.post.body});
     }
     componentDidMount(){
         this.getPostWithId();
-        //this.setState({markdownSrc: this.props.post.body});
+        //this.setState({body: this.props.post.body});
         //onsole.log(this.props.post.body);
     }
     handleMarkdownChange(evt){
-		this.setState({markdownSrc: evt.target.value})
+		this.setState({body: evt.target.value})
 	}
 
 	submitPost(input){
@@ -163,9 +173,9 @@ class EditPost extends React.Component {
     render(){
         return (
             <div id="content" className="site-content center-relative">
-				<PostForm value={this.state.markdownSrc} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
+				<PostForm value={this.state.body} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
 				<ReactMarkdown
-            		source={this.state.markdownSrc} />
+            		source={this.state.body} />
             </div>
         );
     }

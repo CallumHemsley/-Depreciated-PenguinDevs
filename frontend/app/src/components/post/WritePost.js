@@ -14,14 +14,35 @@ const initialSource = `
 class WritePost extends React.Component{
     constructor(props){
         super(props); //pass props back to parent.
-        this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
+        this.handleBodyChange = this.handleBodyChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.state = {
-          markdownSrc: initialSource,
+          title: '',
+          category: '',
+			    body: initialSource,
         };
     }
 
-    handleMarkdownChange(evt){
-      this.setState({markdownSrc: evt.target.value})
+    handleBodyChange(evt){
+      this.setState(
+          {
+              body: evt.target.value,
+            })
+    }
+    handleTitleChange(evt){
+        this.setState(
+            {
+                title: evt.target.value,
+            }
+        )
+    }
+    handleCategoryChange(evt){
+        this.setState(
+            {
+                category: evt.target.value,
+            }
+        )
     }
     submitPost(input){
         this.props.addPost(input);
@@ -32,9 +53,15 @@ class WritePost extends React.Component{
       return(
         <div class="container">
           <h3> New Post </h3>
-          <PostForm value={this.state.markdownSrc} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
+          <PostForm valueTitle={this.state.title}
+                  valueCategory={this.state.category} 
+                  valueBody={this.state.body}
+                  handleTitleChange={this.handleTitleChange} 
+                  handleBodyChange={this.handleBodyChange} 
+                  handleCategoryChange={this.handleCategoryChange} 
+                  submitPost={this.submitPost.bind(this)} />
           <ReactMarkdown
-            source={this.state.markdownSrc} />
+            source={this.state.body} />
         </div>
       )
     }
