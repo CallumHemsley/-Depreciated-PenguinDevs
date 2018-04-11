@@ -24,7 +24,7 @@ const PostForm = (props) => {
                 <div>
                     <input type="text"
                     value={props.valueTitle}
-                    onChange={props.onChangeTitle}
+                    onChange={props.handleTitleChange}
                     name="title"
                     ref={node => titleInput = node}
                     />
@@ -36,7 +36,7 @@ const PostForm = (props) => {
                 <div>
                     <input type="text"
                     value={props.valueCategory}
-                    onChange={props.onChangeCategory}
+                    onChange={props.handleCategoryChange}
                     name="category"
                     ref={node => categoryInput = node}
                     />
@@ -48,7 +48,7 @@ const PostForm = (props) => {
                 <div>
                     <textarea type="text"
                     value={props.valueBody}
-                    onChange={props.onChangeBody}
+                    onChange={props.handleMarkdownChange}
                     name="body"
                     ref={node => bodyInput = node}
                     />

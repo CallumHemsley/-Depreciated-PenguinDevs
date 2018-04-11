@@ -15,6 +15,8 @@ class EditPost extends React.Component {
     constructor(props){
         super(props);
         this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
 		this.state = {
             title: '',
             category: '',
@@ -50,6 +52,20 @@ class EditPost extends React.Component {
                 markdownSrc: evt.target.value,
             })
     }
+    handleTitleChange(evt){
+        this.setState(
+            {
+                title: evt.target.value,
+            }
+        )
+    }
+    handleCategoryChange(evt){
+        this.setState(
+            {
+                category: evt.target.value,
+            }
+        )
+    }
 
 
 	submitPost(input){
@@ -59,7 +75,7 @@ class EditPost extends React.Component {
         return (
             <div id="content" className="site-content center-relative">
                 {this.props.post.title}
-                <PostForm valueTitle={this.state.title} valueCategory={this.state.category} valueBody={this.state.markdownSrc} onChange={this.handleMarkdownChange} submitPost={this.submitPost.bind(this)} />
+                <PostForm valueTitle={this.state.title} valueCategory={this.state.category} valueBody={this.state.markdownSrc} handleTitleChange={this.handleTitleChange} handleMarkdownChange={this.handleMarkdownChange} handleCategoryChange={this.handleCategoryChange} submitPost={this.submitPost.bind(this)} />
                 <ReactMarkdown
                     source={this.state.markdownSrc} />
             </div>  
