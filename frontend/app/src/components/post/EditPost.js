@@ -14,27 +14,40 @@ import '../css/froala_blocks.css';
 class EditPost extends React.Component {
     constructor(props){
         super(props);
-        this.props.fetchPostById(this.props.match.params.number);
         this.handleMarkdownChange = this.handleMarkdownChange.bind(this);
 		this.state = {
             title: '',
             category: '',
 			markdownSrc: ''
-        };
+        }; 
     }
     componentDidMount(){
-        this.setState({title: this.props.post.title});
-        this.setState({category: this.props.post.category});
-        this.setState({markdownSrc: this.props.post.body});
-        console.log(this.props.post.body)
+        this.props.fetchPostById(this.props.match.params.number)
+            .then((post) => {
+                if (this.props.post.title != undefined){
+                    this.setState({
+                        title: this.props.post.title,
+                        markdownSrc: this.props.post.body,
+                        category: this.props.post.category
+                    })
+                }
+            })
+            .catch(err => console.log("Axios err: ", err));
     }
+    //componentDidMount(){
+      //  if (this.props.post.title != undefined){
+        //    this.setState({
+          //      title: this.props.post.title,
+            //    markdownSrc: this.props.post.body,
+              //  category: this.props.post.category
+            //})
+       // }
+    //}
     handleMarkdownChange(evt){
-        console.log(evt.target.valueBody);
+        console.log(evt.target.value);
         this.setState(
             {
-                markdownSrc: evt.target.valueBody,
-                title: evt.target.valueTitle,
-                category: evt.target.valueCategory
+                markdownSrc: evt.target.value,
             })
     }
 
