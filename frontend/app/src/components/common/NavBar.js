@@ -31,27 +31,27 @@ class NavBar extends Component  {
                             </button>
                 
                             <div className="col-4 col-md-2 text-right text-md-center order-lg-6">
-                                <a href="/">
+                                <Link to='/'>
                                     <img src="http://icooon-mono.com/i/icon_14423/icon_144230_256.png" height="30" alt="something not this lmao"/>
                                     Penguin Devs
-                                </a>
+                                </Link>
                             </div>
                 
                             <div className="collapse navbar-collapse col-12 col-md-5 order-lg-1" id="navbarNav2">
                                 <ul className="navbar-nav col-5">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
+                                    <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                                 </li>
                                 <li className="nav-item">
                                     {
-                                        ( isAuthenticated() ) ? <a className="nav-link" href="/writepost">Write Post</a> : '' 
+                                        ( isAuthenticated() ) ? <Link className="nav-link" to="/writepost">Write Post</Link> : '' 
                                     }
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/posts">Posts</a>
+                                    <Link className="nav-link" to="/posts">Posts</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/contact">Contact</a>
+                                    <Link className="nav-link" to="/contact">Contact</Link>
                                 </li>
                                 </ul>
                             </div>

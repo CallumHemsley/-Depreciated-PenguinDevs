@@ -26,7 +26,7 @@ const HomePage = () => {
                                 <a href="single.html">Why you should buy dogecoin</a>
                             </h2>
                             <div className="excerpt">
-                                Now when I had mastered the language of meme, the letters of the alphabet, I had made a valuable acquisition. Doge coin is the best thing ever. And here's why:<a className="read-more" href="/test">read-more</a>
+                                Now when I had mastered the language of meme, the letters of the alphabet, I had made a valuable acquisition. Doge coin is the best thing ever. And here's why:
                             </div>
                         </div>
                     </div>
