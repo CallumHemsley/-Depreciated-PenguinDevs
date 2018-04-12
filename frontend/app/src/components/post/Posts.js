@@ -1,6 +1,9 @@
 import React from  'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import AuthService from '../../utils/AuthService';
+
+const auth = new AuthService();
 class Posts extends React.Component{
   //constructor(props){
   //  super(props);
@@ -8,9 +11,9 @@ class Posts extends React.Component{
     // submitPost(input){
     //     this.props.addPost(input);
     // }
-
+    
     render() {
-
+      const { isAuthenticated } = auth;
       //return JSX, map method creates array with results of calling a provided function on every element in calling array.
       return(
           <div>
@@ -19,9 +22,8 @@ class Posts extends React.Component{
               {this.props.posts.map((b, i) => {
                 return(
                   <tr key={i}>
-                    <li>{b.title}</li>
-                    <li><Link to={`/posts/${b.id}`}>View</Link></li>
-                    <li><Link to={`/editpost/${b.id}`}>Edit</Link></li>
+                    <li><Link to={`/posts/${b.id}`}>{b.title}</Link></li>
+                    <li>{ (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' } </li>
                   </tr>
                 )
               })}
