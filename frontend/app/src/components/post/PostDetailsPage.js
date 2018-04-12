@@ -27,10 +27,10 @@ class PostDetailsPage extends React.Component {
                         <div className="post-info content-660 center-relative">
                             <div className="cat-links">
                                 <ul>
-                                    <li><a href="/">Science</a></li>
+                                    <li><a href="/">{this.props.post.category}</a></li>
                                 </ul>
                             </div>
-                            <div className="entry-date published">February 12, 2016</div>
+                            <div className="entry-date published">{this.props.post.date}</div>
                             <div className="clear"></div>
                         </div>
                         <div className="post-full-width">
