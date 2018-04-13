@@ -2,7 +2,7 @@ import React from  'react';
 import Posts from './Posts';
 import PostDetailsPage from './PostDetailsPage';
 import { Route, Switch } from 'react-router-dom';
-import Category from './Category';
+
 
 
 const Post = () => (

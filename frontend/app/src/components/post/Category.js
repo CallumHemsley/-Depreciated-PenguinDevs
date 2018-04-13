@@ -15,8 +15,8 @@ class Category extends React.Component{
                 <h3> Posts: </h3>
               </div>
               <ul>
-                {this.props.posts.map((b, i) => {
-                    if(b.category == this.props.match.params.category){
+                {this.props.posts.slice(0).reverse().map((b, i) => {
+                    if(b.category === this.props.match.params.category){
                         return(
                             <tr key={i}>
                                 <article id="post-2" class="blog-item-holder">
@@ -43,6 +43,9 @@ class Category extends React.Component{
                                 </article>
                             </tr>
                         )
+                    }
+                    else {
+                        return('')
                     }
                 })}
               </ul>

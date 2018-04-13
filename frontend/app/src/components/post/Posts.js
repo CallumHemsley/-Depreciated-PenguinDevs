@@ -22,7 +22,7 @@ class Posts extends React.Component{
                 <h3> Posts: </h3>
               </div>
               <ul>
-                {this.props.posts.map((b, i) => {
+                {this.props.posts.slice(0).reverse().map((b, i) => {
                   return(
                     <tr key={i}>
                       <article id="post-2" class="blog-item-holder">
