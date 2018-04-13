@@ -34,7 +34,7 @@ class Posts extends React.Component{
                                 <div class="cat-links">
                                     <ul>
                                         <li>
-                                            <Link to="/">{b.category}</Link>
+                                            <Link to={`/postcategory/${b.category}`}>{b.category}</Link>
                                         </li>
                                     </ul>
                                 </div>

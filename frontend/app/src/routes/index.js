@@ -7,6 +7,7 @@ import WritePost from '../components/post/WritePost';
 import EditPost from '../components/post/EditPost';
 import CallBack from '../components/common/CallBack';
 import Login from '../components/common/Login';
+import Category from '../components/post/Category';
 const auth = new AuthService();
 
 //When user authenticated, their url contains a hash with auth info.
@@ -23,6 +24,7 @@ const routes = (
             <Route exact path="/" component={Home}/>
             <Route path="/posts" component={Post} />
             <Route path="/login" component={Login} />
+            <Route path='/postcategory/:category' component={Category}/>
             <Route path="/writepost" render={(props) => (
                 !auth.isAuthenticated() ? (
                     <Redirect to="/login"/>
