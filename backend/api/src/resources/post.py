@@ -8,6 +8,7 @@ post_fields = {
     'id': fields.Integer,
     'title': fields.String,
     'category': fields.String,
+    'excerpt': fields.String,
     'body': fields.String,
     'date': fields.String,
 }
@@ -15,6 +16,7 @@ post_parser = reqparse.RequestParser() #kind of like validation, with extra stuf
 post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('category', type=str, required=True)
+post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('date', type=str, required=False)
 
@@ -40,6 +42,7 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             post.title = args['title']
             post.category = args['category']
             post.body = args['body']
+            post.excerpt = args['excerpt']
             status = HTTPStatus.CREATED
         else:
             abort(404, message="Post {} doesn't exist".format(post_id))

@@ -17,23 +17,31 @@ class WritePost extends React.Component{
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleExcerptChange = this.handleExcerptChange.bind(this);
         this.state = {
-          title: '',
-          category: '',
-			    body: initialSource,
+            title: '',
+            category: '',
+            excerpt: '',
+		    body: initialSource,
         };
     }
 
     handleBodyChange(evt){
-      this.setState(
-          {
-              body: evt.target.value,
-            })
+        this.setState({
+            body: evt.target.value,
+        })
     }
     handleTitleChange(evt){
         this.setState(
             {
                 title: evt.target.value,
+            }
+        )
+    }
+    handleExcerptChange(evt){
+        this.setState(
+            {
+                excerpt: evt.target.value,
             }
         )
     }
@@ -56,9 +64,11 @@ class WritePost extends React.Component{
           <PostForm valueTitle={this.state.title}
                   valueCategory={this.state.category} 
                   valueBody={this.state.body}
+                  valueExcerpt={this.state.excerpt}
                   handleTitleChange={this.handleTitleChange} 
                   handleBodyChange={this.handleBodyChange} 
                   handleCategoryChange={this.handleCategoryChange} 
+                  handleExcerptChange={this.handleExcerptChange}
                   submitPost={this.submitPost.bind(this)} />
           <ReactMarkdown
             source={this.state.body} />

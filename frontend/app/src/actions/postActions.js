@@ -36,6 +36,7 @@ export const putPostById = (post) => {
                 id: post.id,
                 title: post.title,
                 category: post.category,
+                excerpt: post.excerpt,
                 body: post.body
             }
         })
@@ -101,6 +102,7 @@ export const createPost = (post) => {
                 //id: post.id,
                 title: post.title,
                 category: post.category,
+                excerpt: post.excerpt,
                 body: post.body,
                 date: String(date)
             }

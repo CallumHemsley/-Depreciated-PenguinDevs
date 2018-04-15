@@ -17,10 +17,12 @@ class EditPost extends React.Component {
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleExcerptChange = this.handleExcerptChange.bind(this);
 		this.state = {
             id: '',
             title: '',
             category: '',
+            excerpt: '',
 			body: ''
         }; 
     }
@@ -32,7 +34,8 @@ class EditPost extends React.Component {
                         id: this.props.post.id,
                         title: this.props.post.title,
                         body: this.props.post.body,
-                        category: this.props.post.category
+                        category: this.props.post.category,
+                        excerpt: this.props.post.excerpt,
                     })
                 }
             })
@@ -61,6 +64,13 @@ class EditPost extends React.Component {
             }
         )
     }
+    handleExcerptChange(evt){
+        this.setState(
+            {
+                excerpt: evt.target.value,
+            }
+        )
+    }
     handleCategoryChange(evt){
         this.setState(
             {
@@ -80,8 +90,10 @@ class EditPost extends React.Component {
                 <PostForm valueTitle={this.state.title}
                  valueCategory={this.state.category} 
                  valueBody={this.state.body} 
+                 valueExcerpt={this.state.excerpt}
                  handleTitleChange={this.handleTitleChange} 
                  handleBodyChange={this.handleBodyChange} 
+                 handleExcerptChange={this.handleExcerptChange}
                  handleCategoryChange={this.handleCategoryChange} 
                  submitPost={this.submitPost.bind(this)} />
                 <ReactMarkdown

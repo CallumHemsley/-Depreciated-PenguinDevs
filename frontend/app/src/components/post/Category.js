@@ -12,7 +12,7 @@ class Category extends React.Component{
           <div id="content" className="site-content">
             <div className="container">
               <div className="center-relative">
-                <h3> Posts: </h3>
+                <h3> Posts with category: {this.props.match.params.category}</h3>
               </div>
               <ul>
                 {this.props.posts.slice(0).reverse().map((b, i) => {
@@ -34,7 +34,7 @@ class Category extends React.Component{
                                             </div>
                                             <div className="entry-date published">{b.date}</div>
                                             <div className="excerpt">
-                                                INSERT EXCERPT HERE BRO.
+                                                {b.excerpt}
                                             </div>
                                             <li>{ (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' } </li>
                                             <div class="clear"></div>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import '../css/SideBar.css';
 const PostForm = (props) => {
     //collector variables.
-    let titleInput, bodyInput, categoryInput = null;
+    let titleInput, bodyInput, categoryInput, excerptInput = null;
     return(
         <form className="contact-form" onSubmit={e => {
             e.preventDefault();
@@ -11,7 +11,8 @@ const PostForm = (props) => {
             var input = {
                 title: titleInput.value,
                 category: categoryInput.value,
-                body: bodyInput.value
+                body: bodyInput.value,
+                excerpt: excerptInput.value,
 
             };
             //Call method from parent component to handle submit
@@ -39,6 +40,18 @@ const PostForm = (props) => {
                     onChange={props.handleCategoryChange}
                     name="category"
                     ref={node => categoryInput = node}
+                    />
+                </div>
+            </div>
+            <br/>
+            <div>
+                <label>Excerpt: </label>
+                <div>
+                    <input type="text"
+                    value={props.valueExcerpt}
+                    onChange={props.handleExcerptChange}
+                    name="category"
+                    ref={node => excerptInput = node}
                     />
                 </div>
             </div>

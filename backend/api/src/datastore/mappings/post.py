@@ -5,6 +5,7 @@ def post_mapping(meta):
         Column('id', Integer, primary_key=True),
         Column('title', String(255), nullable=False, unique=True), 
         Column('category', String(255), nullable=False, unique=False),
+        Column('excerpt', String(255), nullable=False),
         Column('body', String, nullable=False),
         Column('date', String(255), nullable=False))
     return (Post, post_table)

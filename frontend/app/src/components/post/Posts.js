@@ -40,7 +40,7 @@ class Posts extends React.Component{
                                 </div>
                                 <div className="entry-date published">{b.date}</div>
                                 <div className="excerpt">
-                                    INSERT EXCERPT HERE BRO.
+                                    {b.excerpt}
                                 </div>
                                 <li>{ (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' } </li>
                                 <div class="clear"></div>

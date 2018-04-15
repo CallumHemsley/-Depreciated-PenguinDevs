@@ -29,11 +29,8 @@ const FooterBar = () => {
               </div>
       
               <div className="col-12 col-md-6 mt-4 mt-md-0 text-center text-md-right">
-                <a href="https://www.froala.com">/<i className="fa fa-twitter" aria-hidden="true"> </i></a>&nbsp;&nbsp;
-                <a href="https://www.froala.com">/<i className="fa fa-facebook" aria-hidden="true"> </i></a>&nbsp;&nbsp;
-                <a href="https://www.froala.com">/<i className="fa fa-instagram" aria-hidden="true"> </i></a>&nbsp;&nbsp;
-                <a href="https://www.froala.com">/<i className="fa fa-pinterest" aria-hidden="true"> </i></a>&nbsp;&nbsp;
-                <a href="https://www.froala.com">/<i className="fa fa-google" aria-hidden="true"></i></a>
+                <a href="https://www.twitter.com/penguindevs"><i className="fa fa-twitter" aria-hidden="true"> </i></a>&nbsp;&nbsp;
+                <a href="https://www.instagram.com/penguindevs"><i className="fa fa-instagram" aria-hidden="true"> </i></a>&nbsp;&nbsp;
               </div>
             </div>
           </div>
