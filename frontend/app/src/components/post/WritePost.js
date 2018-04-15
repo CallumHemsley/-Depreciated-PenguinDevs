@@ -10,7 +10,7 @@ const auth = new AuthService();
 const initialSource = `
 # Live demo
 `
-
+var postSuccess = false;
 class WritePost extends React.Component{
     constructor(props){
         super(props); //pass props back to parent.
@@ -53,27 +53,37 @@ class WritePost extends React.Component{
         )
     }
     submitPost(input){
-        this.props.addPost(input);
+        this.props.addPost(input).then((post) => {
+            postSuccess = true;
+        })
+        .catch(err => console.log("Axios err: ", err));
     }
     render() {
       const { isAuthenticated } = auth;
       //return JSX
-      return(
-        <div class="container">
-          <h3> New Post </h3>
-          <PostForm valueTitle={this.state.title}
-                  valueCategory={this.state.category} 
-                  valueBody={this.state.body}
-                  valueExcerpt={this.state.excerpt}
-                  handleTitleChange={this.handleTitleChange} 
-                  handleBodyChange={this.handleBodyChange} 
-                  handleCategoryChange={this.handleCategoryChange} 
-                  handleExcerptChange={this.handleExcerptChange}
-                  submitPost={this.submitPost.bind(this)} />
-          <ReactMarkdown
-            source={this.state.body} />
-        </div>
-      )
+      if (postSuccess === true) {
+          return(
+              <h1> Success. </h1>
+          )
+      }
+      else {
+        return(
+            <div class="container">
+            <h3> New Post </h3>
+            <PostForm valueTitle={this.state.title}
+                    valueCategory={this.state.category} 
+                    valueBody={this.state.body}
+                    valueExcerpt={this.state.excerpt}
+                    handleTitleChange={this.handleTitleChange} 
+                    handleBodyChange={this.handleBodyChange} 
+                    handleCategoryChange={this.handleCategoryChange} 
+                    handleExcerptChange={this.handleExcerptChange}
+                    submitPost={this.submitPost.bind(this)} />
+            <ReactMarkdown
+                source={this.state.body} />
+            </div>
+        )
+    }
     }
     
 }

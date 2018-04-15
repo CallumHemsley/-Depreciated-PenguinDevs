@@ -10,7 +10,7 @@ import '../css/sm-clean.css';
 import '../css/SideBar.css';
 import '../css/froala_blocks.css';
 
-
+var postSuccess = false;
 class EditPost extends React.Component {
     constructor(props){
         super(props);
@@ -81,25 +81,36 @@ class EditPost extends React.Component {
 
 
 	submitPost(input){
-        this.props.editPost(this.state);
+        this.props.editPost(this.state).then((post) => {
+            postSuccess = true;
+        })
+        .catch(err => console.log("Axios err: ", err));;
+        console.log("submitted")
     }
     render(){
-        return (
-            <div id="content" className="site-content center-relative">
-                {this.props.post.title}
-                <PostForm valueTitle={this.state.title}
-                 valueCategory={this.state.category} 
-                 valueBody={this.state.body} 
-                 valueExcerpt={this.state.excerpt}
-                 handleTitleChange={this.handleTitleChange} 
-                 handleBodyChange={this.handleBodyChange} 
-                 handleExcerptChange={this.handleExcerptChange}
-                 handleCategoryChange={this.handleCategoryChange} 
-                 submitPost={this.submitPost.bind(this)} />
-                <ReactMarkdown
-                    source={this.state.body} />
-            </div>  
-        );
+        if (postSuccess === true) {
+            return (
+                <h1> success </h1>
+            )
+        }
+        else {
+            return (
+                <div id="content" className="site-content center-relative">
+                    {this.props.post.title}
+                    <PostForm valueTitle={this.state.title}
+                     valueCategory={this.state.category} 
+                     valueBody={this.state.body} 
+                     valueExcerpt={this.state.excerpt}
+                     handleTitleChange={this.handleTitleChange} 
+                     handleBodyChange={this.handleBodyChange} 
+                     handleExcerptChange={this.handleExcerptChange}
+                     handleCategoryChange={this.handleCategoryChange} 
+                     submitPost={this.submitPost.bind(this)} />
+                    <ReactMarkdown
+                        source={this.state.body} />
+                </div>  
+            );
+        }
     }
 }
 
