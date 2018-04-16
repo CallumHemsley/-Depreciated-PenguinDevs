@@ -7,7 +7,7 @@ import '../css/SideBar.css';
 import '../css/froala_blocks.css';
 const FooterBar = () => {
   return (
-    <div>
+    <div id="content" className="site-content">
         <footer className="fdb-block footer-small">
           <div className="container">
             <div className="row align-items-center">

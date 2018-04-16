@@ -8,6 +8,7 @@ import EditPost from '../components/post/EditPost';
 import CallBack from '../components/common/CallBack';
 import Login from '../components/common/Login';
 import Category from '../components/post/Category';
+import Contact from '../components/common/Contact';
 const auth = new AuthService();
 
 //When user authenticated, their url contains a hash with auth info.
@@ -22,6 +23,7 @@ const routes = (
     <div>
         <Switch>
             <Route exact path="/" component={Home}/>
+            <Route path="/contact" component={Contact} />
             <Route path="/posts" component={Post} />
             <Route path="/login" component={Login} />
             <Route path='/postcategory/:category' component={Category}/>
