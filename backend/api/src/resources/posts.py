@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse, marshal_with, fields
 from http import HTTPStatus
-
+import werkzeug
 from models  import Post
 
 #what data to render in response.
@@ -8,6 +8,7 @@ post_fields = {
     'id': fields.Integer,
     'title': fields.String,
     'category': fields.String,
+    'photo': fields.String,
     'body': fields.String,
     'excerpt': fields.String,
     'date': fields.String,
@@ -16,6 +17,7 @@ post_parser = reqparse.RequestParser() #kind of like validation, with extra stuf
 #post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('category', type=str, required=True)
+post_parser.add_argument('photo', type=werkzeug.FileStorage, required = False)
 post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('date', type=str, required=True)

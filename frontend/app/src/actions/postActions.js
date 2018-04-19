@@ -102,6 +102,7 @@ export const createPost = (post) => {
                 //id: post.id,
                 title: post.title,
                 category: post.category,
+                image: post.image,
                 excerpt: post.excerpt,
                 body: post.body,
                 date: String(date)

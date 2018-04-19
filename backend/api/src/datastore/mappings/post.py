@@ -1,4 +1,4 @@
-from sqlalchemy import Table, Column, Integer, String
+from sqlalchemy import Table, Column, Integer, String, LargeBinary
 from models import Post
 def post_mapping(meta):
     post_table = Table('post', meta,
@@ -6,6 +6,7 @@ def post_mapping(meta):
         Column('title', String(255), nullable=False, unique=True), 
         Column('category', String(255), nullable=False, unique=False),
         Column('excerpt', String(255), nullable=False),
+        Column('photo', LargeBinary, nullable=True),
         Column('body', String, nullable=False),
         Column('date', String(255), nullable=False))
     return (Post, post_table)

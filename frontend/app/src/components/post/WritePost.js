@@ -60,6 +60,7 @@ class WritePost extends React.Component{
         )
     }
     submitPost(input){
+        console.log(input.image);
         this.props.addPost(input).then((post) => {
             postSuccess = true;
         })
@@ -82,7 +83,7 @@ class WritePost extends React.Component{
                     valueCategory={this.state.category} 
                     valueBody={this.state.body}
                     valueExcerpt={this.state.excerpt}
-                    valuePhoto={this.state.image}
+                    valueImage={this.state.image}
                     handleTitleChange={this.handleTitleChange} 
                     handleBodyChange={this.handleBodyChange} 
                     handleImageChange={this.handleImageChange}
