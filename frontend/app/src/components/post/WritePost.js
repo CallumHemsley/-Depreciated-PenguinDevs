@@ -4,7 +4,6 @@ import PostForm from './PostForm';
 import AuthService from '../../utils/AuthService';
 import * as postActions from '../../actions/postActions';
 import ReactMarkdown from 'react-markdown'; 
-
 const auth = new AuthService();
 
 const initialSource = `
@@ -17,15 +16,23 @@ class WritePost extends React.Component{
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
         this.handleExcerptChange = this.handleExcerptChange.bind(this);
+        //this.onImageDrop = this.onImageDrop.bind(this);
         this.state = {
             title: '',
             category: '',
+            image: '',
             excerpt: '',
 		    body: initialSource,
         };
     }
-
+    handleImageChange(image){
+        console.log(image);
+        this.setState({
+            image: image,
+        })
+    }
     handleBodyChange(evt){
         this.setState({
             body: evt.target.value,
@@ -70,12 +77,15 @@ class WritePost extends React.Component{
         return(
             <div class="container">
             <h3> New Post </h3>
+            {this.state.photo}
             <PostForm valueTitle={this.state.title}
                     valueCategory={this.state.category} 
                     valueBody={this.state.body}
                     valueExcerpt={this.state.excerpt}
+                    valuePhoto={this.state.image}
                     handleTitleChange={this.handleTitleChange} 
                     handleBodyChange={this.handleBodyChange} 
+                    handleImageChange={this.handleImageChange}
                     handleCategoryChange={this.handleCategoryChange} 
                     handleExcerptChange={this.handleExcerptChange}
                     submitPost={this.submitPost.bind(this)} />
