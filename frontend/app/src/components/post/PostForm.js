@@ -19,14 +19,14 @@ class PostForm extends Component  {
                 //Assemble data into an object.
                 var input = {
                     title: titleInput.value,
-                    image: imageInput.value,
+                    //image: imageInput.value,
                     category: categoryInput.value,
                     body: bodyInput.value,
                     excerpt: excerptInput.value,
     
                 };
                 //Call method from parent component to handle submit
-                this.props.submitPost(input);
+                this.props.submitPost();
                 //reset form.
                 e.target.reset();
             }}>
@@ -60,8 +60,8 @@ class PostForm extends Component  {
                         <Dropzone
                             multiple={false}
                             accept="image/*"
-                            value={this.props.valuePhoto}
-                            ref={node => imageInput = node}
+                            //value={this.props.valueImage}
+                            //ref={node => imageInput = node}
                             onDrop={this.onImageDrop.bind(this)}>
                             <p>Drop an image or click to upload</p>
                         </Dropzone>

@@ -9,6 +9,7 @@ const auth = new AuthService();
 const initialSource = `
 # Live demo
 `
+
 var postSuccess = false;
 class WritePost extends React.Component{
     constructor(props){
@@ -22,16 +23,18 @@ class WritePost extends React.Component{
         this.state = {
             title: '',
             category: '',
-            image: '',
+            image: null,
             excerpt: '',
 		    body: initialSource,
         };
+
     }
     handleImageChange(image){
         console.log(image);
         this.setState({
             image: image,
         })
+
     }
     handleBodyChange(evt){
         this.setState({
@@ -59,9 +62,8 @@ class WritePost extends React.Component{
             }
         )
     }
-    submitPost(input){
-        console.log(input.image);
-        this.props.addPost(input).then((post) => {
+    submitPost(){
+        this.props.addPost(this.state).then((post) => {
             postSuccess = true;
         })
         .catch(err => console.log("Axios err: ", err));
@@ -78,7 +80,6 @@ class WritePost extends React.Component{
         return(
             <div class="container">
             <h3> New Post </h3>
-            {this.state.photo}
             <PostForm valueTitle={this.state.title}
                     valueCategory={this.state.category} 
                     valueBody={this.state.body}

@@ -93,6 +93,8 @@ export const createPostSuccess = (post) => {
 };
 //thunk updates the data on the server and return new post. For sake of UX, just append the post to existing posts state.
 export const createPost = (post) => {
+    console.log(post.image);
+    console.log(post.title);
     var date = moment().format('MMMM Do, YYYY');
     return (dispatch) => {
         return Axios({
