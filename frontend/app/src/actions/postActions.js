@@ -96,20 +96,23 @@ export const createPost = (post) => {
     console.log(post.image);
     console.log(post.title);
     var date = moment().format('MMMM Do, YYYY');
+    const fd = new FormData();
+    fd.append('title', post.title);
+    fd.append('category', post.category);
+    fd.append('excerpt', post.excerpt);
+    fd.append('body', post.body);
+    fd.append('date', String(date));
+    fd.append('image', post.image);
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    console.log(fd.get('image'));
     return (dispatch) => {
-        return Axios({
-            method: 'post',
-            url: apiUrl,
-            data: {
-                //id: post.id,
-                title: post.title,
-                category: post.category,
-                image: post.image,
-                excerpt: post.excerpt,
-                body: post.body,
-                date: String(date)
-            }
-        })
+        return Axios.post(
+            apiUrl, fd, config
+        )
             .then(response => {
                 //dispatch async action.
                 dispatch(createPostSuccess(response.data))
