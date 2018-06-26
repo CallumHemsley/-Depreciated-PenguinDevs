@@ -1,13 +1,14 @@
 from flask_restful import Resource, reqparse, marshal_with, fields, abort
 from http import HTTPStatus
-
+import werkzeug
 from models  import Post
-
+from base64 import b64encode
 #what data to render in response.
 post_fields = {
     'id': fields.Integer,
     'title': fields.String,
     'category': fields.String,
+    'image': fields.String,
     'excerpt': fields.String,
     'body': fields.String,
     'date': fields.String,
@@ -16,6 +17,7 @@ post_parser = reqparse.RequestParser() #kind of like validation, with extra stuf
 post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('category', type=str, required=True)
+post_parser.add_argument('image', type=werkzeug.FileStorage, required = False, location='files')
 post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('date', type=str, required=False)
@@ -29,6 +31,8 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         by_id = (Post.id == post_id)
         post = self.session.query(Post).filter(by_id).first()
         if post:
+            post.image = b64encode(post.image)
+            post.image = post.image.decode('utf-8')
             return post
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 
@@ -43,6 +47,9 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             post.category = args['category']
             post.body = args['body']
             post.excerpt = args['excerpt']
+            post.image = args['image']
+
+
             status = HTTPStatus.CREATED
         else:
             abort(404, message="Post {} doesn't exist".format(post_id))

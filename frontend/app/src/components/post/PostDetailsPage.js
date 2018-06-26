@@ -8,10 +8,15 @@ import '../css/common.css';
 import '../css/sm-clean.css';
 import '../css/SideBar.css';
 import '../css/froala_blocks.css';
-
+import ImageLoader from 'react-image-file';
 class PostDetailsPage extends React.Component {
     componentDidMount(){
-        this.props.fetchPostById(this.props.match.params.number);
+        this.props.fetchPostById(this.props.match.params.number).then((post) => {
+            var img = document.createElement('img');
+            img.src = 'data:image/jpeg;base64,' + btoa(this.props.post.image);
+            document.body.appendChild(img);
+        })
+        .catch(err => console.log("Axios err: ", err));
     }
     handleNewComment(comment) {
 		console.log(comment.text);
@@ -34,7 +39,8 @@ class PostDetailsPage extends React.Component {
                             <div className="clear"></div>
                         </div>
                         <div className="post-full-width">
-                            <img src="http://placehold.it/200/450" alt=""/>
+                            <img src={"data:;base64," + this.props.post.image}/>
+                            {/* <ImageLoader file={this.props.post.image} alt='some text'/> */}
                         </div>
                         <div className="entry-content">
                             <div className="content-wrap content-660 center-relative">

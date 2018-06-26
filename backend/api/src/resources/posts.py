@@ -1,14 +1,15 @@
 from flask_restful import Resource, reqparse, marshal_with, fields
 from http import HTTPStatus
 import werkzeug
+import psycopg2
 from models  import Post
-
+from base64 import b64encode
 #what data to render in response.
 post_fields = {
     'id': fields.Integer,
     'title': fields.String,
     'category': fields.String,
-    'photo': fields.String,
+    'image': fields.String,
     'body': fields.String,
     'excerpt': fields.String,
     'date': fields.String,
@@ -17,7 +18,7 @@ post_parser = reqparse.RequestParser() #kind of like validation, with extra stuf
 #post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
 post_parser.add_argument('category', type=str, required=True)
-post_parser.add_argument('photo', type=werkzeug.FileStorage, required = False)
+post_parser.add_argument('image', type=werkzeug.FileStorage, required = False, location='files')
 post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('date', type=str, required=True)
@@ -41,6 +42,7 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
             status = HTTPStatus.OK
         else:
             post = Post(**args)
+            post.image =post.image.read()
             self.session.add(post)
             status = HTTPStatus.CREATED
 

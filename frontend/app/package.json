@@ -17,6 +17,7 @@
     "react-bootstrap": "^0.31.1",
     "react-dom": "^16.3.1",
     "react-dropzone": "^4.2.9",
+    "react-image-file": "^0.3.0",
     "react-markdown": "^3.3.0",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.2",
