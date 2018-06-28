@@ -2,7 +2,8 @@ from flask_restful import Resource, reqparse, marshal_with, fields, abort
 from http import HTTPStatus
 import werkzeug
 from models  import Post
-from base64 import b64encode
+import base64
+from io import BytesIO
 #what data to render in response.
 post_fields = {
     'id': fields.Integer,
@@ -31,13 +32,14 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         by_id = (Post.id == post_id)
         post = self.session.query(Post).filter(by_id).first()
         if post:
-            post.image = b64encode(post.image)
-            post.image = post.image.decode('utf-8')
+            post.image = base64.encodestring(post.image)
+            post.image = post.image = post.image.decode('utf-8')
+            #post.image = base64.urlsafe_b64encode(post.image)
             return post
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 
 
-    @marshal_with(post_fields)
+    '''@marshal_with(post_fields)
     def put(self, post_id):
         args = post_parser.parse_args()
         by_id = (Post.id == post_id)
@@ -55,4 +57,4 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             abort(404, message="Post {} doesn't exist".format(post_id))
         self.session.commit()
 
-        return post, status
+        return post, status'''

@@ -3,7 +3,7 @@ from http import HTTPStatus
 import werkzeug
 import psycopg2
 from models  import Post
-from base64 import b64encode
+import base64
 #what data to render in response.
 post_fields = {
     'id': fields.Integer,
@@ -42,7 +42,8 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
             status = HTTPStatus.OK
         else:
             post = Post(**args)
-            post.image =post.image.read()
+            post.image = post.image.read()
+            #post.image = base64.urlsafe_b64encode(post.image)
             self.session.add(post)
             status = HTTPStatus.CREATED
 
