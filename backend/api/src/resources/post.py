@@ -32,9 +32,12 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         by_id = (Post.id == post_id)
         post = self.session.query(Post).filter(by_id).first()
         if post:
-            post.image = base64.encodestring(post.image)
-            post.image = post.image = post.image.decode('utf-8')
-            #post.image = base64.urlsafe_b64encode(post.image)
+            #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
+            if(type(post.image) == bytes):
+                post.image = base64.encodestring(post.image)
+                post.image = post.image.decode('utf-8')
+            else:
+                return post
             return post
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 

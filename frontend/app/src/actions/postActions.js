@@ -1,4 +1,5 @@
 import * as actionTypes from './types';
+import utf8 from 'utf8';
 import moment from 'moment';
 //Use axios to make http request
 import Axios from 'axios';
