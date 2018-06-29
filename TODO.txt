@@ -1,0 +1,2 @@
+- redo all the routing. It's at a point where I understand it but it's messed up due to react-router-dom splitting from react-router etc.
+- images aren't previewed when writing new blog posts

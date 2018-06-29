@@ -4,6 +4,8 @@ import PostForm from './PostForm';
 import AuthService from '../../utils/AuthService';
 import * as postActions from '../../actions/postActions';
 import ReactMarkdown from 'react-markdown'; 
+import { Redirect } from 'react-router-dom';
+
 const auth = new AuthService();
 
 const initialSource = `
@@ -65,6 +67,7 @@ class WritePost extends React.Component{
     submitPost(){
         this.props.addPost(this.state).then((post) => {
             postSuccess = true;
+            
         })
         .catch(err => console.log("Axios err: ", err));
     }

@@ -18,12 +18,14 @@ class EditPost extends React.Component {
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
         this.handleExcerptChange = this.handleExcerptChange.bind(this);
+        this.handleImageChange = this.handleImageChange.bind(this);
 		this.state = {
             id: '',
             title: '',
             category: '',
             excerpt: '',
-			body: ''
+            body: '',
+            image: null
         }; 
     }
     componentDidMount(){
@@ -79,6 +81,11 @@ class EditPost extends React.Component {
         )
     }
 
+    handleImageChange(image){
+        this.setState({
+            image: image,
+        })
+    }
 
 	submitPost(input){
         this.props.editPost(this.state).then((post) => {
@@ -104,7 +111,8 @@ class EditPost extends React.Component {
                      handleTitleChange={this.handleTitleChange} 
                      handleBodyChange={this.handleBodyChange} 
                      handleExcerptChange={this.handleExcerptChange}
-                     handleCategoryChange={this.handleCategoryChange} 
+                     handleCategoryChange={this.handleCategoryChange}
+                     handleImageChange={this.handleImageChange} 
                      submitPost={this.submitPost.bind(this)} />
                     <ReactMarkdown
                         source={this.state.body} />

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 import '../css/SideBar.css';
-
+import { Redirect } from 'react-router-dom';
 
 class PostForm extends Component  {
     onImageDrop(files) {
@@ -90,7 +90,9 @@ class PostForm extends Component  {
                         />
                     </div>
                 </div>
-                <button class="btn mt-4">Submit</button>
+                <button
+                class="btn mt-4">Submit
+                </button>
                 </div>
             </form>
           );

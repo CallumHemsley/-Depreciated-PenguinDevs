@@ -42,22 +42,25 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 
 
-    '''@marshal_with(post_fields)
+    @marshal_with(post_fields)
     def put(self, post_id):
-        args = post_parser.parse_args()
-        by_id = (Post.id == post_id)
-        post = self.session.query(Post).filter(by_id).first()
-        if post:
-            post.title = args['title']
-            post.category = args['category']
-            post.body = args['body']
-            post.excerpt = args['excerpt']
-            post.image = args['image']
+        try:
+            args = post_parser.parse_args()
+            by_id = (Post.id == post_id)
+            post = self.session.query(Post).filter(by_id).first()
+            if post:
+                post.title = args['title']
+                post.category = args['category']
+                post.body = args['body']
+                post.excerpt = args['excerpt']
+                post.image = args['image'].read()
 
 
-            status = HTTPStatus.CREATED
-        else:
-            abort(404, message="Post {} doesn't exist".format(post_id))
-        self.session.commit()
+                status = HTTPStatus.CREATED
+            else:
+                abort(404, message="Post {} doesn't exist".format(post_id))
+            self.session.commit()
 
-        return post, status'''
+            return post, status
+        except Exception as e:
+            print(e)

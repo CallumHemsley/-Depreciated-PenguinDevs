@@ -29,26 +29,32 @@ export const fetchPostById = (postId) => {
 
 //Sync action
 export const putPostById = (post) => {
-    return(dispatch) => {
-        return Axios({
-            method: 'put',
-            url: (apiUrl + '/' + post.id),
-            data: {
-                id: post.id,
-                title: post.title,
-                category: post.category,
-                excerpt: post.excerpt,
-                body: post.body
-            }
-        })
+    const fd = new FormData();
+    fd.append('id', post.id);
+    fd.append('title', post.title);
+    fd.append('category', post.category);
+    fd.append('excerpt', post.excerpt);
+    fd.append('body', post.body);
+    fd.append('image', post.image);
+    const config = {
+        headers: {
+            'content-type': 'multipart/form-data'
+        }
+    };
+    return (dispatch) => {
+        return Axios.put(
+            (apiUrl + '/' + post.id),
+                fd,
+                config
+        )
             .then(response => {
                 //dispatch async action.
-                dispatch(putPostByIdSuccess(response.data))
+                dispatch(createPostSuccess(response.data))
             })
             .catch(error => {
                 throw(error);
             });
-    }
+    };
 }
 
 //async
