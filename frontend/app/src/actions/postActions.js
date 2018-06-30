@@ -3,6 +3,7 @@ import utf8 from 'utf8';
 import moment from 'moment';
 //Use axios to make http request
 import Axios from 'axios';
+import { push } from 'connected-react-router'
 //API URL
 var apiUrl = "http://localhost:3000/posts";
 //Sync action
@@ -49,6 +50,7 @@ export const putPostById = (post) => {
         )
             .then(response => {
                 //dispatch async action.
+                dispatch(push('/posts'))
                 dispatch(createPostSuccess(response.data))
             })
             .catch(error => {
@@ -122,6 +124,7 @@ export const createPost = (post) => {
         )
             .then(response => {
                 //dispatch async action.
+                dispatch(push('/posts'))
                 dispatch(createPostSuccess(response.data))
             })
             .catch(error => {

@@ -4,7 +4,9 @@ import PostForm from './PostForm';
 import AuthService from '../../utils/AuthService';
 import * as postActions from '../../actions/postActions';
 import ReactMarkdown from 'react-markdown'; 
-import { Redirect } from 'react-router-dom';
+
+
+
 
 const auth = new AuthService();
 
@@ -72,7 +74,10 @@ class WritePost extends React.Component{
         .catch(err => console.log("Axios err: ", err));
     }
     render() {
-      const { isAuthenticated } = auth;
+      const 
+      
+      
+      { isAuthenticated } = auth;
       //return JSX
       if (postSuccess === true) {
           return(
@@ -94,6 +99,8 @@ class WritePost extends React.Component{
                     handleCategoryChange={this.handleCategoryChange} 
                     handleExcerptChange={this.handleExcerptChange}
                     submitPost={this.submitPost.bind(this)} />
+            <hr/>
+            <h1 className="entry-title"> {this.state.title} </h1>
             <ReactMarkdown
                 source={this.state.body} />
             </div>

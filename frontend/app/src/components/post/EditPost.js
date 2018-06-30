@@ -114,6 +114,7 @@ class EditPost extends React.Component {
                      handleCategoryChange={this.handleCategoryChange}
                      handleImageChange={this.handleImageChange} 
                      submitPost={this.submitPost.bind(this)} />
+                    <h1 className="entry-title"> {this.state.title} </h1>
                     <ReactMarkdown
                         source={this.state.body} />
                 </div>  
