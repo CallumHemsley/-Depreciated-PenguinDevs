@@ -51,7 +51,7 @@ export const putPostById = (post) => {
             .then(response => {
                 //dispatch async action.
                 dispatch(push('/posts'))
-                dispatch(createPostSuccess(response.data))
+                dispatch(createPostSuccess(response.data)) //is it even reaching this now? FIND OUT.
             })
             .catch(error => {
                 throw(error);
