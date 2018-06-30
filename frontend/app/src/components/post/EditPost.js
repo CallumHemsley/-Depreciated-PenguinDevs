@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import * as postActions from '../../actions/postActions';
-import Disqus from '../post/Disqus';
 import PostForm from './PostForm';
 import ReactMarkdown from 'react-markdown';
 import '../css/clear.css';
@@ -31,7 +30,7 @@ class EditPost extends React.Component {
     componentDidMount(){
         this.props.fetchPostById(this.props.match.params.number)
             .then((post) => {
-                if (this.props.post.title != undefined){
+                if (this.props.post.title !== undefined){
                     this.setState({
                         id: this.props.post.id,
                         title: this.props.post.title,

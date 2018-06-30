@@ -1,1 +1,2 @@
+- redo css and get rid of gimmicky jquery... it sucks.
 - images aren't previewed when writing new blog posts (this is really annoying to do.. least of my priorities right now.)

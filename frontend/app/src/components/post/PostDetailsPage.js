@@ -8,7 +8,7 @@ import '../css/common.css';
 import '../css/sm-clean.css';
 import '../css/SideBar.css';
 import '../css/froala_blocks.css';
-import ImageLoader from 'react-image-file';
+
 class PostDetailsPage extends React.Component {
     componentDidMount(){
         this.props.fetchPostById(this.props.match.params.number).then((post) => {
@@ -39,7 +39,7 @@ class PostDetailsPage extends React.Component {
                             <div className="clear"></div>
                         </div>
                         <div className="post-full-width">
-                            <img src={"data:;base64," + this.props.post.image}/>
+                            <img src={"data:;base64," + this.props.post.image} alt="blogpost"/>
                             {/* <ImageLoader file={this.props.post.image} alt='some text'/> */}
                         </div>
                         <div className="entry-content">

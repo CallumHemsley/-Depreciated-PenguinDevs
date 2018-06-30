@@ -1,14 +1,12 @@
 import React from  'react';
 import { connect } from 'react-redux';
 import PostForm from './PostForm';
-import AuthService from '../../utils/AuthService';
 import * as postActions from '../../actions/postActions';
 import ReactMarkdown from 'react-markdown'; 
 
 
 
 
-const auth = new AuthService();
 
 const initialSource = `
 # Live demo
@@ -74,10 +72,6 @@ class WritePost extends React.Component{
         .catch(err => console.log("Axios err: ", err));
     }
     render() {
-      const 
-      
-      
-      { isAuthenticated } = auth;
       //return JSX
       if (postSuccess === true) {
           return(

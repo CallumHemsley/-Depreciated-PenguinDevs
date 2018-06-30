@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Dropzone from 'react-dropzone';
 import '../css/SideBar.css';
-import { Redirect } from 'react-router-dom';
 
 class PostForm extends Component  {
     onImageDrop(files) {
@@ -12,7 +11,7 @@ class PostForm extends Component  {
         this.props.handleImageChange(photoInput);
     }
     render() {
-        let titleInput, bodyInput, categoryInput, excerptInput, imageInput = null;
+        let titleInput, bodyInput, categoryInput, excerptInput = null;
         return (
             <form className="contact-form" onSubmit={e => {
                 e.preventDefault();

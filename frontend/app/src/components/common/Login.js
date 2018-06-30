@@ -1,6 +1,5 @@
 // ./src/components/common/NavBar.js
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import AuthService from '../../utils/AuthService';
 import '../css/clear.css';
 import '../css/common.css';
