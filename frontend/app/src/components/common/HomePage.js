@@ -23,7 +23,7 @@ const HomePage = () => {
                             </div>
                             <div className="entry-date published">February 12, 2016</div>
                             <h2 className="entry-title">
-                                <a href="single.html">Why you should buy dogecoin</a>
+                                <a href="/">Why you should buy dogecoin</a>
                             </h2>
                             <div className="excerpt">
                                 Now when I had mastered the language of meme, the letters of the alphabet, I had made a valuable acquisition. Doge coin is the best thing ever. And here's why:
@@ -36,7 +36,7 @@ const HomePage = () => {
                     <div class="entry-content relative">
                         <div class="content-1170 center-relative">
                             <h2 class="entry-title">
-                                <a href="single.html">I like to reinvent myself</a>
+                                <a href="/">I like to reinvent myself</a>
                             </h2>
                             <div class="cat-links">
                                 <ul>
