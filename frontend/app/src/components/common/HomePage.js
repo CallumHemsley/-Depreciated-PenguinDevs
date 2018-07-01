@@ -11,9 +11,7 @@ const HomePage = () => {
   return (
     <div id="content" className="site-content">
         <div className="container">
-            <div className="blog-holder">
-                <Posts/>
-            </div>
+            <Posts/>
         </div>
     </div>
   );

@@ -18,7 +18,7 @@ class Posts extends React.Component{
       return(
           <div id="content" className="site-content">
             <div className="container">
-              {this.props.posts.reverse().slice(0,1).map((b, i) => {
+              {this.props.posts.slice(0,1).reverse().map((b, i) => {
                   return(
                     <tr key={i}>
                       <article id="post-1" className="blog-item-holder featured-post">
