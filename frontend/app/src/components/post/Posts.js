@@ -18,11 +18,36 @@ class Posts extends React.Component{
       return(
           <div id="content" className="site-content">
             <div className="container">
-              <div className="center-relative">
-                <h3> Posts: </h3>
-              </div>
-              <ul>
-                {this.props.posts.slice(0).reverse().map((b, i) => {
+              {this.props.posts.reverse().slice(0,1).map((b, i) => {
+                  return(
+                    <tr key={i}>
+                      <article id="post-1" className="blog-item-holder featured-post">
+                        <div className="entry-content relative">
+                            <div>
+                                <div class="cat-links">
+                                    <ul>
+                                        <li>
+                                            <Link to={`/postcategory/${b.category}`}>{b.category}</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div className="entry-date published">{b.date}</div>
+                                <h2 className="entry-title">
+                                    <Link to={`/posts/${b.id}`}>{b.title}</Link>
+                                </h2>
+                                <div className="excerpt">
+                                    {b.excerpt}
+                                </div>
+                                { (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' }
+                            </div>
+                        </div>
+                    </article>
+                    </tr>
+                  )
+                })}
+
+
+                {this.props.posts.slice(1).reverse().map((b, i) => {
                   return(
                     <tr key={i}>
                       <article id="post-2" class="blog-item-holder">
@@ -42,15 +67,13 @@ class Posts extends React.Component{
                                 <div className="excerpt">
                                     {b.excerpt}
                                 </div>
-                                <li>{ (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' } </li>
-                                <div class="clear"></div>
+                                { (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' }
                             </div>
                         </div>
                     </article>
                     </tr>
                   )
                 })}
-              </ul>
             </div>
           </div>
       )
