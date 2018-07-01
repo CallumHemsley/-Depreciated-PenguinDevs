@@ -1,3 +1,3 @@
-- redo css.. it sucks
-- fix authentication from auth0, currently anyone can sign up and post???
+- FIX CSS for markdown engine, something is putting it in "pre mode"
+- make images consistent size
 - images aren't previewed when writing new blog posts (this is really annoying to do.. least of my priorities right now.)

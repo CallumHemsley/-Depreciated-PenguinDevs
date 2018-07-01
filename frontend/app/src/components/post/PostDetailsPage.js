@@ -1,14 +1,13 @@
+import '../css/common.css';
+import '../css/sm-clean.css';
+import '../css/SideBar.css';
+import '../css/froala_blocks.css';
+import '../css/clear.css';
 import React from 'react';
 import {connect} from 'react-redux';
 import * as postActions from '../../actions/postActions';
 import Disqus from '../post/Disqus';
 import ReactMarkdown from 'react-markdown';
-import '../css/clear.css';
-import '../css/common.css';
-import '../css/sm-clean.css';
-import '../css/SideBar.css';
-import '../css/froala_blocks.css';
-
 class PostDetailsPage extends React.Component {
     componentDidMount(){
         this.props.fetchPostById(this.props.match.params.number).then((post) => {
@@ -45,7 +44,8 @@ class PostDetailsPage extends React.Component {
                         <div className="entry-content">
                             <div className="content-wrap content-660 center-relative">
                                 <ReactMarkdown
-                                    source={this.props.post.body} />
+                                    source={this.props.post.body}
+                                    renderers={{code: CodeRenderer}} />
                             </div>
                         </div>
                         <div className="clear"></div>
@@ -55,6 +55,12 @@ class PostDetailsPage extends React.Component {
             </div>
         );
     }
+}
+
+const DefaultCodeRenderer = ReactMarkdown.renderers.code
+
+const CodeRenderer = props => {
+  return <div id="code"><DefaultCodeRenderer {...props} /></div>
 }
 
 const mapStateToProps = (state, ownProps) => {
