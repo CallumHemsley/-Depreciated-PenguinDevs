@@ -11,6 +11,10 @@ const HomePage = () => {
   return (
     <div id="content" className="site-content">
         <div className="container">
+            <header className="blog-header">
+              <h1 className="blog-title">Penguin Devs</h1>
+              <h2 clasName="blog-description"> something im good at programming etc.... </h2>
+            </header>
             <Posts/>
         </div>
     </div>

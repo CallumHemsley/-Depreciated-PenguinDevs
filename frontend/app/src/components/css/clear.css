@@ -30,6 +30,42 @@ body {
     line-height:1;
 }
 
+.blog-header {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.blog-header .blog-title {
+    font-family: Open Sans;
+    margin: 0;
+    padding: 42px 16px 8px;
+    font-size: 50px;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: -2px;
+    outline: 0;
+    line-height: 50px;
+    word-break: break-word;
+    color: #333;
+}
+
+.blog-header .blog-description {
+    font-family: Open Sans;
+    margin: 0 0 20px;
+    padding: 0 32px;
+    font-size: 18px;
+    line-height: 1.5;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+}
+article {
+    border-bottom: 1px solid #f2f2f0;
+}
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section { 
     display:block;
