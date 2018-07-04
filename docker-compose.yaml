@@ -1,7 +1,12 @@
 version: '2'
 
 services:
-      
+
+  web:
+    build: './frontend/server'
+    volumes:
+      - 'shared-build:/usr/share/nginx/html'
+
   app:
     build: './frontend/app'
     volumes:

@@ -2,8 +2,6 @@ version: '2'
 
 services:
 
-  app:
+  web:
     ports:
       - '80:80'
-    environment:
-    PRODUCTION: 'true'
