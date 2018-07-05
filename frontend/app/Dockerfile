@@ -1,16 +1,17 @@
-FROM node:8
+# base image
+FROM node:9.6.1
 
-#ADD yarn.lock /yarn.lock
-ADD package.json /package.json
+# set working directory
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
-ENV NODE_PATH=/node_modules
-ENV PATH=$PATH:/node_modules/.bin
-RUN yarn
+# add `/usr/src/app/node_modules/.bin` to $PATH
+ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-WORKDIR /app
-ADD . /app
+# install and cache app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm install --silent
+RUN npm install react-scripts@1.1.1 -g --silent
 
-EXPOSE 80
-
-ENTRYPOINT ["/bin/bash", "/app/run.sh"]
-CMD ["start"]
+# start app
+CMD ["npm", "start"]
