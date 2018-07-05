@@ -13,7 +13,7 @@ const HomePage = () => {
         <div className="container">
             <header className="blog-header">
               <h1 className="blog-title">Penguin Devs</h1>
-              <h2 clasName="blog-description"> something im good at programming etc.... </h2>
+              <h2 clasName="blog-description"> I'm a Software Developer from England. This website is about my thoughts and my projects. </h2>
             </header>
             <Posts/>
         </div>
