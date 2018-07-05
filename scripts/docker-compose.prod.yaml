@@ -2,6 +2,9 @@ version: '2'
 
 services:
 
-  web:
+  app:
+    build: 
+      context: ./frontend/app
+      dockerfile: Dockerfile-prod
     ports:
       - '80:80'
