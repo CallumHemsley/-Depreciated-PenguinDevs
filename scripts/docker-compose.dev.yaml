@@ -8,9 +8,6 @@ services:
     volumes:
       - ./frontend/app:/usr/src/app'
 
-  web:
-    ports:
-      - '8080:80'
 
   api:
     environment:
