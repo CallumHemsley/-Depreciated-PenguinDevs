@@ -58,13 +58,13 @@ class NavBar extends Component  {
                 
                             <ul className="navbar-nav justify-content-end col-sm-5 order-lg-12 d-none d-md-flex">
                                 <li className="nav-item">
-                                <a className="nav-link" href="https://www.froala.com"><i className="fa fa-twitter"></i></a>
+                                <a className="nav-link" href="https://www.twitter.com/penguindevs"><i className="fa fa-twitter"></i></a>
                                 </li>
                                 <li className="nav-item">
-                                <a className="nav-link" href="https://www.froala.com"><i className="fa fa-github"></i></a>
+                                <a className="nav-link" href="https://www.github.com/callumhemsley"><i className="fa fa-github"></i></a>
                                 </li>
                                 <li className="nav-item">
-                                <a className="nav-link" href="https://www.froala.com"><i className="fa fa-slack"></i></a>
+                                <a className="nav-link" href="https://www.slack.com"><i className="fa fa-slack"></i></a>
                                 </li>
                                 <li className="nav-item">
                                     {

@@ -7,34 +7,21 @@ import '../css/SideBar.css';
 import '../css/froala_blocks.css';
 const FooterBar = () => {
   return (
-    <div id="content" className="site-content">
-        <footer className="fdb-block footer-small">
-          <div className="container">
-            <div className="row align-items-center">
-              <div className="col-12 col-md-6">
-                <ul className="nav justify-content-center justify-content-md-start">
-                  <li className="nav-item">
-                    <a className="nav-link active" href="https://www.froala.com">Home</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="https://www.froala.com">Features</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="https://www.froala.com">Terms</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="https://www.froala.com">About</a>
-                  </li>
-                </ul>
+    <div id="foot">
+      <div id="content" className="site-content">
+          <footer className="fdb-block footer-small">
+            <div id="footMargin" className="container">
+              <div className="contact">
+              © 2018 Callum Hemsley
               </div>
-      
-              <div className="col-12 col-md-6 mt-4 mt-md-0 text-center text-md-right">
+              <div id="icon" className="col-12 mt-4 mt-md-0 text-center text-md-center">
+                <a href="mailto:cthemsley@gmail.com"><i className="fa fa-envelope-o" aria-hidden="true"> </i></a>&nbsp;&nbsp;
                 <a href="https://www.twitter.com/penguindevs"><i className="fa fa-twitter" aria-hidden="true"> </i></a>&nbsp;&nbsp;
                 <a href="https://www.instagram.com/penguindevs"><i className="fa fa-instagram" aria-hidden="true"> </i></a>&nbsp;&nbsp;
               </div>
             </div>
-          </div>
-        </footer>
+          </footer>
+      </div>
     </div>
   );
 };

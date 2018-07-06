@@ -17,7 +17,39 @@ time, mark, audio, video {
     vertical-align:baseline;
     background:transparent;
 }
-
+.user {
+    display: block;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    margin:auto;
+    background-image: url('https://pbs.twimg.com/profile_images/929437104685371392/LUXtW-vy_400x400.jpg');
+  }
+#icon {
+    margin: 10px 0 0 0;
+    font-size: 1.2em;
+}
+#footMargin {
+    border-top: 1px solid #ddd;
+}
+#foot {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:100px;   /* Height of the footer */
+}
+.contact {
+    margin: 10px 0 0 10px;
+    text-align: center;
+    font-size: 0.95em;
+    color: #aaa;
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.42857143;
+}
 #code {
     padding: .2rem .4rem;
     font-size: 90%;
