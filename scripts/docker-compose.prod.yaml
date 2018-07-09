@@ -8,3 +8,8 @@ services:
       dockerfile: Dockerfile-prod
     ports:
       - '80:80'
+
+  api:
+
+    ports:
+      - '3000:3000'
