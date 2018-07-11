@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+
+  app:
+    build: 
+      context: ./frontend/app
+      dockerfile: Dockerfile-prod
+
+    ports:
+      - '80:80'
+
+  api:
+    build: 
+      context: ./backend/api
+      dockerfile: Dockerfile-prod
+    environment:
+      - FLASK_ENV=production
+      - DATASTORE_URI='postgres://postgres@datastore'
+    ports:
+      - '3000:3000'
+    restart: always
+
+  datastore:
+    build: './backend/datastore'
