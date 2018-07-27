@@ -14,7 +14,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: 'penguindevs.eu.auth0.com',
         clientID: 'npUUguUiNi7EYwyEAR48pc8OpK1HqNPa',
-        redirectUri: 'http://localhost:5000/callback',
+        redirectUri: 'penguindevs.xyz/callback', //localhost if dev
         audience: 'https://penguindevs.eu.auth0.com/userinfo',
         responseType: 'token id_token',
         scope: this.requestedScopes
