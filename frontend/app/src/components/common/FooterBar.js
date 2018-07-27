@@ -13,10 +13,9 @@ const FooterBar = () => {
       <div id="content" className="site-content">
           <footer className="fdb-block footer-small">
             <div id="footMargin" className="container">
-            <Link className="nav-link" to='/writepost'>
               <div className="contact">
                © 2018 Callum Hemsley 
-              </div></Link>
+              </div>
               <div id="icon" className="col-12 mt-4 mt-md-0 text-center text-md-center">
                 <a href="mailto:cthemsley@gmail.com"><i className="fa fa-envelope-o" aria-hidden="true"> </i></a>&nbsp;&nbsp;
                 <a href="https://www.twitter.com/penguindevs"><i className="fa fa-twitter" aria-hidden="true"> </i></a>&nbsp;&nbsp;
