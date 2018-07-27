@@ -4,7 +4,7 @@ import moment from 'moment';
 import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
-var apiUrl = "http://localhost:3000/posts";
+var apiUrl = "http://penguindevs.xyz:3000/posts";
 //Sync action
 export const fetchPostByIdSuccess = (post) => {
     return {
