@@ -17,12 +17,12 @@ def main():
     store = make_datastore() #create datastore object.
     store_context = dict(store=store)
 
-    api.add_resource(PostsResource, r'/posts', #using 'r' before hand means that it will be treated as a raw string.(done so / left in and not taken out)
+    api.add_resource(PostsResource, r'/users/posts', #using 'r' before hand means that it will be treated as a raw string.(done so / left in and not taken out)
         resource_class_kwargs=store_context) #pass through constructor to lossely couple each other. 
         #the value of resource_class_kwargs is forwarded and passed into my resource implementation's constructor. (PostsResource)
         #So i'm injecting the store_context dependency into PostsResource
 
-    api.add_resource(PostResource, r'/posts/<int:post_id>',
+    api.add_resource(PostResource, r'/users/posts/<int:post_id>',
         resource_class_kwargs=store_context)
     
     debug_mode = environ.get('DEBUG') is not None #bool value
