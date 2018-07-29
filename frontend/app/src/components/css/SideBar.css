@@ -397,7 +397,6 @@ input, textarea, select
 .site-content
 {
     width: calc(100% - 100px);
-    margin-left: 100px;
     padding-bottom: 50px;
     position: relative;
     -webkit-transition: margin 0.3s ease;
