@@ -18,7 +18,7 @@ services:
       - FLASK_ENV=production
       - DATASTORE_URI=postgres://postgres@datastore
     expose:
-      - 3000
+      - 5000
     restart: always
 
   datastore:
