@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import * as postActions from '../../actions/postActions';
 import ReactMarkdown from 'react-markdown'; 
-
+import CodeBlock from './CodeBlock'
 
 
 
@@ -96,7 +96,8 @@ class WritePost extends React.Component{
             <hr/>
             <h1 className="entry-title"> {this.state.title} </h1>
             <ReactMarkdown
-                source={this.state.body} />
+                source={this.state.body}
+                renderers={{code: CodeBlock}} />
             </div>
         )
     }
