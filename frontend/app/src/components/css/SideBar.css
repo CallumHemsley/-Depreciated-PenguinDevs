@@ -396,8 +396,8 @@ input, textarea, select
 
 .site-content
 {
-    width: calc(100% - 100px);
-    padding-bottom: 50px;
+    /*width: calc(100% - 100px);*/
+    padding-bottom: 40px;
     position: relative;
     -webkit-transition: margin 0.3s ease;
     -moz-transition: margin 0.3s ease;
@@ -1351,7 +1351,7 @@ body.open .site-content
     .site-content 
     {
         width: calc(100% - 40px);
-        margin-left: 40px;
+        /*margin-left: 40px;*/
     }
 
     body.open .site-content
