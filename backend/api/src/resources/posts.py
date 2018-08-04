@@ -42,7 +42,8 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
             status = HTTPStatus.OK
         else:
             post = Post(**args)
-            post.image = post.image.read()
+            if post != '':
+                post.image = post.image.read()
             #post.image = base64.urlsafe_b64encode(post.image)
             self.session.add(post)
             status = HTTPStatus.CREATED
