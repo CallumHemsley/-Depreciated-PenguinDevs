@@ -44,7 +44,8 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
             status = HTTPStatus.OK
         else:
             post = Post(**args)
-            if post != '':
+            print (post.image)
+            if post.image is not None:
                 post.image = post.image.read()
             #post.image = base64.urlsafe_b64encode(post.image)
             post.views = 0
