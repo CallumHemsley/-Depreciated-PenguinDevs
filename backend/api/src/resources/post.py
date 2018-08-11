@@ -12,6 +12,7 @@ post_fields = {
     'image': fields.String,
     'excerpt': fields.String,
     'body': fields.String,
+    'views': fields.Integer,
     'date': fields.String,
 }
 post_parser = reqparse.RequestParser() #kind of like validation, with extra stuff that can be nice.
@@ -21,6 +22,7 @@ post_parser.add_argument('category', type=str, required=True)
 post_parser.add_argument('image', type=werkzeug.FileStorage, required = False, location='files')
 post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
+post_parser.add_argument('views', type=int, required=False)
 post_parser.add_argument('date', type=str, required=False)
 
 class PostResource(Resource): #resource contains all the shit u need to get, post etc.
@@ -32,6 +34,8 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         by_id = (Post.id == post_id)
         post = self.session.query(Post).filter(by_id).first()
         if post:
+            post.views += 1
+            self.session.commit()
             #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
             if(type(post.image) == bytes):
                 post.image = base64.encodestring(post.image)

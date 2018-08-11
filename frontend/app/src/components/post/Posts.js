@@ -39,6 +39,7 @@ class Posts extends React.Component{
                                     {b.excerpt}
                                 </div>
                                 { (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' }
+                                <h4> {b.views} </h4>
                             </div>
                         </div>
                     </article>

@@ -8,5 +8,6 @@ def post_mapping(meta):
         Column('excerpt', String(255), nullable=False),
         Column('image', LargeBinary, nullable=True),
         Column('body', String, nullable=False),
+        Column('views', Integer, nullable=True)
         Column('date', String(255), nullable=False))
     return (Post, post_table)
