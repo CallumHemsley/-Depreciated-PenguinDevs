@@ -32,6 +32,7 @@ class Posts extends React.Component{
                                     </ul>
                                 </div>
                                 <div className="entry-date published">{b.date}</div>
+                                <div className="views">  Views: {b.views}</div>
                                 <h2 className="entry-title">
                                     <Link to={`/posts/${b.id}`}>{b.title}</Link>
                                 </h2>
@@ -39,7 +40,6 @@ class Posts extends React.Component{
                                     {b.excerpt}
                                 </div>
                                 { (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' }
-                                <h4> views: {b.views} </h4>
                             </div>
                         </div>
                     </article>
@@ -65,11 +65,11 @@ class Posts extends React.Component{
                                     </ul>
                                 </div>
                                 <div className="entry-date published">{b.date}</div>
+                                <div className="views">Views: {b.views}</div>
                                 <div className="excerpt">
                                     {b.excerpt}
                                 </div>
                                 { (isAuthenticated()) ? <Link to={`/editpost/${b.id}`}>Edit</Link> : '' }
-                                <h4> views: {b.views} </h4>
                             </div>
                         </div>
                     </article>

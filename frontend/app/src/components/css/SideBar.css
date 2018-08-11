@@ -563,6 +563,21 @@ body.open .site-content
     display: none;
 }
 
+.views {
+    font-family: 'Montserrat', sans-serif, Arial;
+    display: inline-block;
+    font-size: 14px;
+    padding-left: 8px;
+    font-weight: 700;
+}
+
+.views:before {
+    content: "\2022";
+    font-size: 14px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
 .published
 {
     font-family: 'Montserrat', sans-serif, Arial;
@@ -572,6 +587,8 @@ body.open .site-content
     font-weight: 700;
     color: #aabdbd;
 }
+
+
 
 .published:before
 {
