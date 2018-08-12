@@ -102,10 +102,6 @@ footer,header,hgroup,menu,nav,section {
     display:block;
 }
 
-nav ul,ul,ol {
-    list-style:none;
-}
-
 blockquote, q {
     quotes:none;
 }
