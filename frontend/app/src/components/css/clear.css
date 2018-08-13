@@ -10,7 +10,6 @@ article, aside, canvas, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section, summary,
 time, mark, audio, video {
     margin:0;
-    padding:0;
     border:0;
     outline: none;
     font-size:100%;
