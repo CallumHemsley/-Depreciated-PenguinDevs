@@ -15,23 +15,8 @@ const Contact = () => {
                     <div className="cat-links">
                         <ul>
                             <li>Email: cthemsley@gmail.com</li>
-                        </ul>
-                    </div>
-                    <div className="clear"></div>
-                    <div className="cat-links">
-                        <ul>
                             <li>Github: CallumHemsley</li>
-                        </ul>
-                    </div>
-                    <div className="clear"></div>
-                    <div className="cat-links">
-                        <ul>
                             <li>Twitter: @PenguinDevs</li>
-                        </ul>
-                    </div>
-                    <div className="clear"></div>
-                    <div className="cat-links">
-                        <ul>
                             <li>Instagram: PenguinDevs</li>
                         </ul>
                     </div>
