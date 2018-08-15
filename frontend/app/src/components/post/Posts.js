@@ -25,7 +25,7 @@ class Posts extends React.Component{
                         <div className="entry-content relative">
                             <div>
                                 <div class="cat-links">
-                                    <ul>
+                                    <ul id="catid">
                                         <li>
                                             <Link to={`/postcategory/${b.category}`}>{b.category}</Link>
                                         </li>
@@ -58,7 +58,7 @@ class Posts extends React.Component{
                                     <Link to={`/posts/${b.id}`}>{b.title}</Link>
                                 </h2>
                                 <div class="cat-links">
-                                    <ul>
+                                    <ul id="catid">
                                         <li>
                                             <Link to={`/postcategory/${b.category}`}>{b.category}</Link>
                                         </li>

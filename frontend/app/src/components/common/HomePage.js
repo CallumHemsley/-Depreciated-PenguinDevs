@@ -16,6 +16,9 @@ const HomePage = () => {
               <div className="user"></div>
               <h2 className="blog-description"> I'm a Software Developer and university student from England.<br/> This website is about my thoughts and projects. </h2>
             </header>
+            <div id="footMargin"/>
+            <br/>
+            <br/>
             <Posts/>
         </div>
     </div>
