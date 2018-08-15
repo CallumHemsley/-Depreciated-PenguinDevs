@@ -6,7 +6,7 @@ import '../css/clear.css';
 import React from 'react';
 import {connect} from 'react-redux';
 import * as postActions from '../../actions/postActions';
-import Disqus from '../post/Disqus';
+import DisqusThread from '../post/Disqus';
 import ReactMarkdown from 'react-markdown';
 class PostDetailsPage extends React.Component {
     componentDidMount(){
@@ -50,7 +50,11 @@ class PostDetailsPage extends React.Component {
                         </div>
                         <div className="clear"></div>
                     </article>
-                    <Disqus shortname="test" title="title" url="penguindevs"/>
+                    <DisqusThread
+                        id={this.props.post.id}
+                        title={this.props.post.title}
+                        path="/blog/123-disquss-integration"
+                        />
                 </div>
             </div>
         );

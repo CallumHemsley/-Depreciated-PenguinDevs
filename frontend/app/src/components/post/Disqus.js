@@ -1,85 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-export default class Disqus extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = props
+
+const SHORTNAME = 'penguindevs-1';
+const WEBSITE_URL = 'https://penguindevs.xyz';
+
+function renderDisqus() {
+  if (window.DISQUS === undefined) {
+    var script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://' + SHORTNAME + '.disqus.com/embed.js';
+    document.getElementsByTagName('head')[0].appendChild(script);
+  } else {
+    window.DISQUS.reset({ reload: true });
+  }
+}
+
+class DisqusThread extends React.Component {
+  static propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+  };
+
+  shouldComponentUpdate(nextProps) {
+    return (
+      this.props.id !== nextProps.id ||
+      this.props.title !== nextProps.title ||
+      this.props.path !== nextProps.path
+    );
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState(nextProps)
+  componentDidMount() {
+    renderDisqus();
   }
 
-  componentWillMount () {
-    if (typeof window !== 'undefined' && window.document) {
-      const component = this
-      window.disqus_config = function () {
-        this.page.identifier = component.state.identifier
-        this.page.title = component.state.title
-        this.page.url = component.state.url
-        this.page.category_id = component.state.category_id
-        this.callbacks.onNewComment = component.state.onNewComment
-      }
-      const script = document.createElement('script')
-      script.src = `//${this.state.shortname}.disqus.com/embed.js`
-      script.async = true
-      document.body.appendChild(script)
+  componentDidUpdate() {
+    renderDisqus();
+  }
+
+  render() {
+    let { id, title, path, ...other } = this.props;
+
+    if (process.env.BROWSER) {
+      window.disqus_shortname = SHORTNAME;
+      window.disqus_identifier = id;
+      window.disqus_title = title;
+      window.disqus_url = WEBSITE_URL + path;
     }
-  }
 
-  render () {
-    let {shortname, identifier, title, url, category_id, onNewComment, ...props} = this.props
-    return (<div id="disqus_thread" {...props}></div>)
+    return <div {...other} id="disqus_thread" />;
   }
 }
 
-Disqus.propTypes = {
-  /**
-   * `shortname` tells the Disqus service your forum's shortname,
-   * which is the unique identifier for your website as registered
-   * on Disqus. If undefined , the Disqus embed will not load.
-   */
-  shortname: PropTypes.string.isRequired,
-
-  /**
-   * `identifier` tells the Disqus service how to identify the
-   * current page. When the Disqus embed is loaded, the identifier
-   * is used to look up the correct thread. If disqus_identifier
-   * is undefined, the page's URL will be used. The URL can be
-   * unreliable, such as when renaming an article slug or changing
-   * domains, so we recommend using your own unique way of
-   * identifying a thread.
-   */
-  identifier: PropTypes.string,
-
-  /**
-   * `title` tells the Disqus service the title of the current page.
-   * This is used when creating the thread on Disqus for the first time.
-   * If undefined, Disqus will use the <title> attribute of the page.
-   * If that attribute could not be used, Disqus will use the URL of the page.
-   */
-  title: PropTypes.string,
-
-  /**
-   * `url` tells the Disqus service the URL of the current page.
-   * If undefined, Disqus will take the global.location.href.
-   * This URL is used to look up or create a thread if disqus_identifier
-   * is undefined. In addition, this URL is always saved when a thread is
-   * being created so that Disqus knows what page a thread belongs to.
-   */
-  url: PropTypes.string,
-
-  /**
-   * `category_id` tells the Disqus service the category to be used for
-   * the current page. This is used when creating the thread on Disqus
-   * for the first time.
-   */
-  category_id: PropTypes.string,
-
-  /**
-   * `onNewComment` function accepts one parameter `comment` which is a
-   * JavaScript object with comment `id` and `text`. This allows you to track
-   * user comments and replies and run a script after a comment is posted.
-   */
-  onNewComment: PropTypes.func
-}
+export default DisqusThread;
