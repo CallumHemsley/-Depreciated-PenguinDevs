@@ -24,7 +24,7 @@ post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('views', type=int, required=False)
 post_parser.add_argument('date', type=str, required=True)
-post_parser.add_argument('tokenid', type=str, required=True)
+post_parser.add_argument('tokenid', type=str, required=False)
 
 class PostsResource(Resource): #resource contains all the shit u need to get, post etc.
     def __init__(self, store):
