@@ -5,6 +5,7 @@ import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
 var apiUrl = "https://penguindevs.xyz/users/posts";
+//var apiUrl = "https://localhost/users/posts";
 //Sync action
 export const fetchPostByIdSuccess = (post) => {
     return {
@@ -101,8 +102,10 @@ export const createPostSuccess = (post) => {
 };
 //thunk updates the data on the server and return new post. For sake of UX, just append the post to existing posts state.
 export const createPost = (post) => {
-    console.log(post.image);
-    console.log(post.title);
+    //console.log(post.image);
+    //console.log(post.title);
+    var cat = localStorage.getItem('id_token');
+    console.log(cat);
     var date = moment().format('MMMM Do, YYYY');
     const fd = new FormData();
     fd.append('title', post.title);
