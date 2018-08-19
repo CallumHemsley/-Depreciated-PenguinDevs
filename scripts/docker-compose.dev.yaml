@@ -5,6 +5,9 @@ services:
   app:
     ports:
       - '5000:5000'
+    build:
+      context: ./frontend/app
+      dockerfile: Dockerfile
     volumes:
       - ./frontend/app:/usr/src/app'
 
@@ -15,3 +18,10 @@ services:
 
     ports:
       - '3000:3000'
+    build: 
+      context: ./backend/api
+      dockerfile: Dockerfile
+    environment:
+      - FLASK_ENV=development
+      - DATASTORE_URI=postgres://postgres@datastore
+    restart: always
