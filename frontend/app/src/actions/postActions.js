@@ -104,7 +104,7 @@ export const createPostSuccess = (post) => {
 export const createPost = (post) => {
     //console.log(post.image);
     //console.log(post.title);
-    var cat = localStorage.getItem('id_token');
+    var cat = localStorage.getItem('scopes');
     console.log(cat);
     var date = moment().format('MMMM Do, YYYY');
     const fd = new FormData();
