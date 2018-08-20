@@ -105,7 +105,8 @@ class EditPost extends React.Component {
                 <h1 className="entry-title"> {this.state.title} </h1>
                 <ReactMarkdown
                     source={this.state.body}
-                    renderers={{code: CodeBlock}} />
+                    renderers={{code: CodeBlock}}
+                    skipHtml={false} />
             </div>  
         );
     }

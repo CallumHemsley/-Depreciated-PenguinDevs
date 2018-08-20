@@ -45,7 +45,8 @@ class PostDetailsPage extends React.Component {
                             <div className="content-wrap content-660 center-relative">
                                 <ReactMarkdown
                                     source={this.props.post.body}
-                                    renderers={{code: CodeRenderer}} />
+                                    renderers={{code: CodeRenderer}}
+                                    skipHtml={false} />
                             </div>
                         </div>
                         <div className="clear"></div>
