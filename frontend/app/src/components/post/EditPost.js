@@ -106,7 +106,7 @@ class EditPost extends React.Component {
                 <ReactMarkdown
                     source={this.state.body}
                     renderers={{code: CodeBlock}}
-                    skipHtml={false} />
+                    escapeHtml={false} />
             </div>  
         );
     }

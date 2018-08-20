@@ -46,7 +46,7 @@ class PostDetailsPage extends React.Component {
                                 <ReactMarkdown
                                     source={this.props.post.body}
                                     renderers={{code: CodeRenderer}}
-                                    skipHtml={false} />
+                                    escapeHtml={false} />
                             </div>
                         </div>
                         <div className="clear"></div>
