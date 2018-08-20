@@ -39,7 +39,7 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
         args = post_parser.parse_args()
         print(args['tokenid'])
         F = open('./src/resources/token.txt', 'r')
-        if (args['tokenid'] == (F.read())):
+        if (args['tokenid'] in (F.read())):
             post_parser.remove_argument('tokenid')
             args = post_parser.parse_args()
 
