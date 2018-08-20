@@ -5,7 +5,7 @@ import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
 var apiUrl = "https://penguindevs.xyz/users/posts";
-//var apiUrl = "http://localhost:3000/users/posts";
+//var apiUrl = "http://localhost/users/posts";
 //Sync action
 export const fetchPostByIdSuccess = (post) => {
     return {
@@ -31,12 +31,14 @@ export const fetchPostById = (postId) => {
 //Sync action
 export const putPostById = (post) => {
     const fd = new FormData();
+    var scopes = localStorage.getItem('scopes');
     fd.append('id', post.id);
     fd.append('title', post.title);
     fd.append('category', post.category);
     fd.append('excerpt', post.excerpt);
     fd.append('body', post.body);
     fd.append('image', post.image);
+    fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -104,8 +106,7 @@ export const createPostSuccess = (post) => {
 export const createPost = (post) => {
     //console.log(post.image);
     //console.log(post.title);
-    var cat = localStorage.getItem('scopes');
-    console.log(cat);
+    var scopes = localStorage.getItem('scopes');
     var date = moment().format('MMMM Do, YYYY');
     const fd = new FormData();
     fd.append('title', post.title);
@@ -114,7 +115,7 @@ export const createPost = (post) => {
     fd.append('body', post.body);
     fd.append('date', String(date));
     fd.append('image', post.image);
-    fd.append('tokenid', cat);
+    fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'

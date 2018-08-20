@@ -15,7 +15,7 @@ export default class Auth {
         domain: 'penguindevs.eu.auth0.com',
         clientID: 'npUUguUiNi7EYwyEAR48pc8OpK1HqNPa',
         redirectUri: 'http://penguindevs.xyz/callback',
-        //redirectUri: 'http://localhost:5000/callback',
+        //redirectUri: 'http://localhost/callback',
         audience: 'https://penguindevs.eu.auth0.com/userinfo',
         responseType: 'token id_token',
         scope: this.requestedScopes
