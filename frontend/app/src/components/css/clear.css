@@ -17,6 +17,13 @@ time, mark, audio, video {
     background:transparent;
 }
 
+p, li{
+    font-family: medium-content-serif-font,Georgia,Cambria,"Times New Roman",Times,serif;
+    font-size: 21px;
+    line-height: 1.58;
+    letter-spacing: -.003em;
+}
+
 #catid {
     padding-left: 0;
 }
