@@ -32,7 +32,7 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
 
     @marshal_with(post_fields) #apply field filtering.
     def get(self):
-        return self.session.query(Post).all()
+        return self.session.query(Post).order_by(Post.date).all()
     
     @marshal_with(post_fields)
     def post(self):
