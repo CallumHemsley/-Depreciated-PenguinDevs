@@ -28,6 +28,10 @@ p, li{
     padding-left: 0;
 }
 
+code {
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    font-size: 15px;
+}
 .user {
     display: block;
     width: 150px;
