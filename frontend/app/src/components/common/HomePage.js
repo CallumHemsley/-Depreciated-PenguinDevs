@@ -1,6 +1,7 @@
 // ./src/components/common/HomePage.js
 import React from 'react';
 import Posts from '../post/Posts';
+import WritePost from '../post/WritePost';
 import '../css/clear.css';
 import '../css/common.css';
 import '../css/sm-clean.css';
@@ -20,6 +21,7 @@ const HomePage = () => {
             <br/>
             <br/>
             <Posts/>
+            <WritePost/>
         </div>
     </div>
   );

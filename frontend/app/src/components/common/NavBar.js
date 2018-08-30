@@ -40,7 +40,7 @@ class NavBar extends Component  {
                             <div className="collapse navbar-collapse col-12 col-md-5 order-lg-1" id="navbarNav2">
                                 <ul className="navbar-nav col-5">
                                 <li className="nav-item active">
-                                    <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
+                                    <Link id="navLink" className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                                 </li>
                                 <li className="nav-item">
                                     {
@@ -48,10 +48,10 @@ class NavBar extends Component  {
                                     }
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/posts">Posts</Link>
+                                    <Link id="navLink" className="nav-link" to="/posts">Posts</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/contact">Contact</Link>
+                                    <Link id="navLink" className="nav-link" to="/contact">Contact</Link>
                                 </li>
                                 </ul>
                             </div>

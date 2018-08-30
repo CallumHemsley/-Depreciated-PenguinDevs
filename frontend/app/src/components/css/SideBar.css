@@ -95,17 +95,17 @@ input, textarea, select
 
 .content-660
 {
-    max-width: 660px;
+    max-width: 90%;
 }
 
 .content-900
 {
-    max-width: 900px;
+    max-width: 90%;
 }
 
 .content-1070
 {
-    max-width: 1070px;
+    max-width: 90%;
 }
 
 .content-660 img, .content-1070 img, .content-900 img
