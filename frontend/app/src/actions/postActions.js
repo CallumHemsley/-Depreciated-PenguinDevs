@@ -4,8 +4,12 @@ import moment from 'moment';
 import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
-var apiUrl = "https://penguindevs.xyz/users/posts";
-//var apiUrl = "http://localhost/users/posts";
+if (process.env.NPM_ENV == 'production') {
+    var apiUrl = "https://penguindevs.xyz/users/posts";
+}
+else {
+    var apiUrl = "http://localhost/users/posts";
+}
 
 //Sync action
 export const fetchPostByIdSuccess = (post) => {

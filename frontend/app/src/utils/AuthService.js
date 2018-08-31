@@ -1,6 +1,12 @@
 import auth0 from 'auth0-js';
 import {history} from '../store/configureStore';
 
+if (process.env.NPM_ENV == 'production') {
+    var redirect = 'http://penguindevs.xyz/callback';
+}
+else {
+    var  redirect = 'http://localhost/callback';
+}
 export default class Auth {
     constructor() {
         this.login = this.login.bind(this);
@@ -14,8 +20,7 @@ export default class Auth {
     auth0 = new auth0.WebAuth({
         domain: 'penguindevs.eu.auth0.com',
         clientID: 'npUUguUiNi7EYwyEAR48pc8OpK1HqNPa',
-        redirectUri: 'http://penguindevs.xyz/callback',
-        //redirectUri: 'http://localhost/callback',
+        redirectUri: redirect,
         audience: 'https://penguindevs.eu.auth0.com/userinfo',
         responseType: 'token id_token',
         scope: this.requestedScopes

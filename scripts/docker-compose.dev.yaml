@@ -3,25 +3,37 @@ version: '2'
 services:
 
   app:
-    ports:
-      - '5000:5000'
-    build:
+    build: 
       context: ./frontend/app
-      dockerfile: Dockerfile
-    volumes:
-      - ./frontend/app:/usr/src/app'
+      dockerfile: Dockerfile-prod
 
+    environment:
+      - NPM_ENV=development
+
+    expose:
+      - 80
 
   api:
-    environment:
-      DEBUG: 'yes'
-
-    ports:
-      - '3000:3000'
     build: 
       context: ./backend/api
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-prod
     environment:
       - FLASK_ENV=development
       - DATASTORE_URI=postgres://postgres@datastore
+    expose:
+      - 5000
     restart: always
+
+  datastore:
+    build: './backend/datastore'
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - api
+      - app

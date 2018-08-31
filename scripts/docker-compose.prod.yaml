@@ -7,6 +7,9 @@ services:
       context: ./frontend/app
       dockerfile: Dockerfile-prod
 
+    environment:
+      - NPM_ENV=production
+
     expose:
       - 80
 
