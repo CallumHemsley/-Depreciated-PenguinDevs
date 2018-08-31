@@ -29,7 +29,8 @@
     "redux": "^3.7.2",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
-    "stream-concat": "^0.2.0"
+    "stream-concat": "^0.2.0",
+    "universal-cookie": "^3.0.4"
   },
   "scripts": {
     "start": "react-scripts start",

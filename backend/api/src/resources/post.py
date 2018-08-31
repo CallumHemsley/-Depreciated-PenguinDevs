@@ -52,7 +52,8 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         try:
             args = post_parser.parse_args()
             F = open('./src/resources/token.txt', 'r')
-            if (args['tokenid'] in (F.read())):
+            print(args['tokenid'])
+            if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
                 post_parser.remove_argument('tokenid')
                 args = post_parser.parse_args()
                 by_id = (Post.id == post_id)

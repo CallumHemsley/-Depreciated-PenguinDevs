@@ -26,7 +26,8 @@ class WritePost extends React.Component{
             category: '',
             image: null,
             excerpt: '',
-		    body: initialSource,
+            body: initialSource,
+            scopes: 'openid profile',
         };
 
     }

@@ -6,6 +6,7 @@ import { push } from 'connected-react-router'
 //API URL
 var apiUrl = "https://penguindevs.xyz/users/posts";
 //var apiUrl = "http://localhost/users/posts";
+
 //Sync action
 export const fetchPostByIdSuccess = (post) => {
     return {
@@ -107,6 +108,7 @@ export const createPost = (post) => {
     //console.log(post.image);
     //console.log(post.title);
     var scopes = localStorage.getItem('scopes');
+    console.log(scopes);
     var date = moment().format('MMMM Do, YYYY');
     const fd = new FormData();
     fd.append('title', post.title);
