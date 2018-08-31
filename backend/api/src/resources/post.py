@@ -52,7 +52,6 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         try:
             args = post_parser.parse_args()
             F = open('./src/resources/token.txt', 'r')
-            print(args['tokenid'])
             if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
                 post_parser.remove_argument('tokenid')
                 args = post_parser.parse_args()
@@ -71,7 +70,7 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
                 else:
                     abort(404, message="Post {} doesn't exist".format(post_id))
                 self.session.commit()
-
+                post_parser.add_argument('tokenid', type=str, required=False)
                 return post, status
             return "no"
         except Exception as e:
