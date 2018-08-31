@@ -59,6 +59,6 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
                 status = HTTPStatus.CREATED
 
             self.session.commit()  
-
+            post_parser.add_argument('tokenid', type=str, required=False)
             return post, status
         return "no"  
