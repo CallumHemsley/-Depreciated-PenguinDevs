@@ -4,7 +4,6 @@ import moment from 'moment';
 import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
-console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'production') {
     var apiUrl = "https://penguindevs.xyz/users/posts";
 }
@@ -113,7 +112,6 @@ export const createPost = (post) => {
     //console.log(post.image);
     //console.log(post.title);
     var scopes = localStorage.getItem('scopes');
-    console.log(scopes);
     var date = moment().format('MMMM Do, YYYY');
     const fd = new FormData();
     fd.append('title', post.title);

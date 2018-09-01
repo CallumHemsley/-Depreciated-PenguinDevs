@@ -135,7 +135,7 @@ q:before, q:after {
 a {
     margin:0;
     padding:0;
-    font-size:100%;
+    font-size:75%;
 	outline: none;
     vertical-align:baseline;
     background:transparent;
