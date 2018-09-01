@@ -4,7 +4,8 @@ import moment from 'moment';
 import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
-if (process.env.NPM_ENV == 'production') {
+console.log(process.env.NODE_ENV);
+if (process.env.NODE_ENV == 'production') {
     var apiUrl = "https://penguindevs.xyz/users/posts";
 }
 else {

@@ -1,7 +1,7 @@
 import auth0 from 'auth0-js';
 import {history} from '../store/configureStore';
 
-if (process.env.NPM_ENV == 'production') {
+if (process.env.NODE_ENV == 'production') {
     var redirect = 'http://penguindevs.xyz/callback';
 }
 else {
