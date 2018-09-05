@@ -24,7 +24,6 @@ post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('views', type=int, required=False)
 post_parser.add_argument('date', type=str, required=False)
-post_parser.add_argument('tokenid', type=str, required=False)
 
 class PostResource(Resource): #resource contains all the shit u need to get, post etc.
     def __init__(self, store):
@@ -36,6 +35,7 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         post = self.session.query(Post).filter(by_id).first()
         if post:
             post.views += 1
+            
             #self.session.commit()
             #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
             if(type(post.image) == bytes):
@@ -48,8 +48,13 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             abort(404, message="Post {} doesn't exist".format(post_id)) 
 
     @marshal_with(post_fields)
+    def options(self, post_id):
+        print("HI OPTIONS HERE")
+
+    @marshal_with(post_fields)
     def put(self, post_id):
         try:
+            post_parser.add_argument('tokenid', type=str, required=False)
             args = post_parser.parse_args()
             F = open('./src/resources/token.txt', 'r')
             if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
@@ -70,8 +75,9 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
                 else:
                     abort(404, message="Post {} doesn't exist".format(post_id))
                 self.session.commit()
-                post_parser.add_argument('tokenid', type=str, required=False)
+                #post_parser.add_argument('tokenid', type=str, required=False)
                 return post, status
             return "no"
         except Exception as e:
             print(e)
+            print("IM COMING IN HEERE AS AN EXCEPTION")
