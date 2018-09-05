@@ -44,9 +44,10 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
     @marshal_with(post_fields) #apply field filtering.
     def get(self, post_id):
         by_id = (Post.id == post_id)
+        self.session.query(Post).filter(by_id).update({'views': Post.views + 1})
         post = self.session.query(Post).filter(by_id).first()
         if post:
-            post.views += 1
+            #post.views += 1
             
             #self.session.commit()
             #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
