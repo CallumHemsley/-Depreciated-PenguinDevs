@@ -58,17 +58,23 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 
 
-    @marshal_with(post_fields)
-    def options(self, post_id):
-        print("HI OPTIONS HERE")
 
     @marshal_with(post_fields_token)
     def put(self, post_id):
+<<<<<<< HEAD
         post_parser.add_argument('tokenid', type=str, required=False)
         args = post_parser.parse_args()
         F = open('./src/resources/token.txt', 'r')
         if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
             post_parser.remove_argument('tokenid')
+=======
+        try:
+        #post_parser.add_argument('tokenid', type=str, required=False)
+        #args = post_parser.parse_args()
+        #F = open('./src/resources/token.txt', 'r')
+        #if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
+            #post_parser.remove_argument('tokenid')
+>>>>>>> c9b584e12c168da4c382bbdcecd5761a75100a86
             args = post_parser.parse_args()
             by_id = (Post.id == post_id)
             post = self.session.query(Post).filter(by_id).first()
@@ -77,7 +83,11 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
                 post.category = args['category']
                 post.body = args['body']
                 post.excerpt = args['excerpt']
+<<<<<<< HEAD
                 if args['image'] is not None:
+=======
+                if post.image is not None:
+>>>>>>> c9b584e12c168da4c382bbdcecd5761a75100a86
                     post.image = args['image'].read()
 
 
@@ -87,4 +97,11 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             self.session.commit()
             #post_parser.add_argument('tokenid', type=str, required=False)
             return post, status
+<<<<<<< HEAD
         return "no"
+=======
+            #return "no"
+        except Exception as e:
+            print(e)
+            print("IM COMING IN HEERE AS AN EXCEPTION")
+>>>>>>> c9b584e12c168da4c382bbdcecd5761a75100a86

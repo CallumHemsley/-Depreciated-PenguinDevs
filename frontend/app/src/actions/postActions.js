@@ -4,6 +4,7 @@ import moment from 'moment';
 import Axios from 'axios';
 import { push } from 'connected-react-router'
 //API URL
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV == 'production') {
     var apiUrl = "https://penguindevs.xyz/users/posts";
 }
@@ -43,7 +44,7 @@ export const putPostById = (post) => {
     fd.append('excerpt', post.excerpt);
     fd.append('body', post.body);
     fd.append('image', post.image);
-    fd.append('tokenid', scopes);
+    //fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -120,7 +121,7 @@ export const createPost = (post) => {
     fd.append('body', post.body);
     fd.append('date', String(date));
     fd.append('image', post.image);
-    fd.append('tokenid', scopes);
+    //fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
