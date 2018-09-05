@@ -44,7 +44,6 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
         args = post_parser.parse_args()
 
 
-<<<<<<< HEAD
             by_title = (Post.title == args['title'])
             post = self.session.query(Post).filter(by_title).first()
             if post:
@@ -58,21 +57,6 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
                 post.views = 0
                 self.session.add(post)
                 status = HTTPStatus.CREATED
-=======
-        by_title = (Post.title == args['title'])
-        post = self.session.query(Post).filter(by_title).first()
-        if post:
-            post.title = args['title']
-            status = HTTPStatus.OK
-        else:
-            post = Post(**args)
-            if post.image is not None:
-                post.image = post.image.read()
-            #post.image = base64.urlsafe_b64encode(post.image)
-            post.views = 0
-            self.session.add(post)
-            status = HTTPStatus.CREATED
->>>>>>> c9b584e12c168da4c382bbdcecd5761a75100a86
 
         self.session.commit()  
             #post_parser.add_argument('tokenid', type=str, required=False)
