@@ -24,7 +24,7 @@ post_parser.add_argument('excerpt', type=str, required=True)
 post_parser.add_argument('body', type=str, required=True)
 post_parser.add_argument('views', type=int, required=False)
 post_parser.add_argument('date', type=str, required=True)
-#post_parser.add_argument('tokenid', type=str, required=False)
+post_parser.add_argument('tokenid', type=str, required=False)
 
 class PostsResource(Resource): #resource contains all the shit u need to get, post etc.
     def __init__(self, store):
@@ -36,12 +36,12 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
     
     @marshal_with(post_fields)
     def post(self):
-        #args = post_parser.parse_args()
-        #print(args['tokenid'])
-        #F = open('./src/resources/token.txt', 'r')
-        #if (args['tokenid'] in (F.read())):
-            #post_parser.remove_argument('tokenid')
         args = post_parser.parse_args()
+        #print(args['tokenid'])
+        F = open('./src/resources/token.txt', 'r')
+        if (args['tokenid'] in (F.read())):
+            post_parser.remove_argument('tokenid')
+            args = post_parser.parse_args()
 
 
             by_title = (Post.title == args['title'])
@@ -58,7 +58,7 @@ class PostsResource(Resource): #resource contains all the shit u need to get, po
                 self.session.add(post)
                 status = HTTPStatus.CREATED
 
-        self.session.commit()  
-            #post_parser.add_argument('tokenid', type=str, required=False)
+            self.session.commit()  
+            post_parser.add_argument('tokenid', type=str, required=False)
             return post, status
         return "no"  

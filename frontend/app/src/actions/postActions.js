@@ -44,7 +44,7 @@ export const putPostById = (post) => {
     fd.append('excerpt', post.excerpt);
     fd.append('body', post.body);
     fd.append('image', post.image);
-    //fd.append('tokenid', scopes);
+    fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
@@ -121,7 +121,7 @@ export const createPost = (post) => {
     fd.append('body', post.body);
     fd.append('date', String(date));
     fd.append('image', post.image);
-    //fd.append('tokenid', scopes);
+    fd.append('tokenid', scopes);
     const config = {
         headers: {
             'content-type': 'multipart/form-data'
