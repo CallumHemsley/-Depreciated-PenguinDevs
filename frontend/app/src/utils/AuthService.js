@@ -5,7 +5,7 @@ if (process.env.NODE_ENV == 'production') {
     var redirect = 'http://penguindevs.xyz/callback';
 }
 else {
-    var  redirect = 'http://localhost/callback';
+    var  redirect = 'http://localhost:3000/callback';
 }
 export default class Auth {
     constructor() {

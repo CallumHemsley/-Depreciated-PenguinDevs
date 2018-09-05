@@ -11,7 +11,7 @@ services:
       - './frontend/app:/usr/src/app'
       - '/usr/src/app/node_modules'
     environment:
-      - ' NODE_ENV=${NODE_ENV}'
+      NODE_ENV: development
 
 
   api:
