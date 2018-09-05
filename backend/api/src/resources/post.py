@@ -15,6 +15,17 @@ post_fields = {
     'views': fields.Integer,
     'date': fields.String,
 }
+post_fields_token = {
+    'id': fields.Integer,
+    'title': fields.String,
+    'category': fields.String,
+    'image': fields.String,
+    'excerpt': fields.String,
+    'body': fields.String,
+    'views': fields.Integer,
+    'date': fields.String,
+    'tokenid': fields.String,
+}
 post_parser = reqparse.RequestParser() #kind of like validation, with extra stuff that can be nice.
 post_parser.add_argument('id', type=int, required = True)
 post_parser.add_argument('title', type=str, required=True) #limit characters for title.
@@ -51,33 +62,29 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
     def options(self, post_id):
         print("HI OPTIONS HERE")
 
-    @marshal_with(post_fields)
+    @marshal_with(post_fields_token)
     def put(self, post_id):
-        try:
-            post_parser.add_argument('tokenid', type=str, required=False)
+        post_parser.add_argument('tokenid', type=str, required=False)
+        args = post_parser.parse_args()
+        F = open('./src/resources/token.txt', 'r')
+        if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
+            post_parser.remove_argument('tokenid')
             args = post_parser.parse_args()
-            F = open('./src/resources/token.txt', 'r')
-            if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
-                post_parser.remove_argument('tokenid')
-                args = post_parser.parse_args()
-                by_id = (Post.id == post_id)
-                post = self.session.query(Post).filter(by_id).first()
-                if post:
-                    post.title = args['title']
-                    post.category = args['category']
-                    post.body = args['body']
-                    post.excerpt = args['excerpt']
-                    if post.image is not None:
-                        post.image = args['image'].read()
+            by_id = (Post.id == post_id)
+            post = self.session.query(Post).filter(by_id).first()
+            if post:
+                post.title = args['title']
+                post.category = args['category']
+                post.body = args['body']
+                post.excerpt = args['excerpt']
+                if args['image'] is not None:
+                    post.image = args['image'].read()
 
 
-                    status = HTTPStatus.CREATED
-                else:
-                    abort(404, message="Post {} doesn't exist".format(post_id))
-                self.session.commit()
-                #post_parser.add_argument('tokenid', type=str, required=False)
-                return post, status
-            return "no"
-        except Exception as e:
-            print(e)
-            print("IM COMING IN HEERE AS AN EXCEPTION")
+                status = HTTPStatus.CREATED
+            else:
+                abort(404, message="Post {} doesn't exist".format(post_id))
+            self.session.commit()
+            #post_parser.add_argument('tokenid', type=str, required=False)
+            return post, status
+        return "no"
