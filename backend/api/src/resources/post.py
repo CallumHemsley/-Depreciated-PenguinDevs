@@ -61,32 +61,46 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
             abort(404, message="Post {} doesn't exist".format(post_id)) 
 
 
-    @marshal_with(post_fields_token)
+    @marshal_with(post_fields)
     def put(self, post_id):
-        try:
+        #try:
+        args = post_parser.parse_args()
+        F = open('./src/resources/token.txt', 'r')
+        if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
+            post_parser.remove_argument('tokenid')
             args = post_parser.parse_args()
-            F = open('./src/resources/token.txt', 'r')
-            if (args['tokenid'] in (F.read())) or (args['tokenid'] == 'tokenid'):
-                post_parser.remove_argument('tokenid')
-                args = post_parser.parse_args()
-                by_id = (Post.id == post_id)
-                post = self.session.query(Post).filter(by_id).first()
-                if post:
-                    post.title = args['title']
-                    post.category = args['category']
-                    post.body = args['body']
-                    post.excerpt = args['excerpt']
-                    if args['image'] is not None:
-                        post.image = args['image'].read()
-
-
-                    status = HTTPStatus.CREATED
+            by_id = (Post.id == post_id)
+            post = self.session.query(Post).filter(by_id).first()
+            if post:
+                #post.title = args['title']
+                #post.category = args['category']
+                #post.body = args['body']
+                #post.excerpt = args['excerpt']
+                print(type(args['image']))
+                if args['image'] is not None:
+                    #post.image = args['image'].read()
+                    self.session.query(Post).filter(by_id).update(
+                        {'title': args['title'],
+                        'category': args['category'],
+                        'body': args['body'],
+                        'excerpt': args['excerpt'],
+                        'image': args['image'].read()})
                 else:
-                    abort(404, message="Post {} doesn't exist".format(post_id))
+                    self.session.query(Post).filter(by_id).update(
+                        {'title': args['title'],
+                        'category': args['category'],
+                        'body': args['body'],
+                        'excerpt': args['excerpt'],
+                        'image': Post.image})
                 self.session.commit()
-                #post_parser.add_argument('tokenid', type=str, required=False)
-                return post, status
-            return "no"
-        except Exception as e:
-            print(e)
-            print("this was the exception (in case it was ambiguous).")
+
+
+                status = HTTPStatus.CREATED
+            else:
+                abort(404, message="Post {} doesn't exist".format(post_id))
+            post_parser.add_argument('tokenid', type=str, required=False)
+            return post, status
+        return "no"
+        #except Exception as e:
+         #   print(e)
+          #  print("this was the exception (in case it was ambiguous).")
