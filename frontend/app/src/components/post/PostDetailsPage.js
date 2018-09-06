@@ -28,7 +28,7 @@ class PostDetailsPage extends React.Component {
                         <h1 className="entry-title">
                             {this.props.post.title}
                         </h1>
-                        <div className="post-info content-660 center-relative">
+                        <div className="post-info center-relative">
                             <div className="cat-links">
                                 <ul>
                                     <li><a href="/">{this.props.post.category}</a></li>
@@ -42,7 +42,7 @@ class PostDetailsPage extends React.Component {
                             {/* <ImageLoader file={this.props.post.image} alt='some text'/> */}
                         </div>
                         <div className="entry-content">
-                            <div className="content-wrap content-660 center-relative">
+                            <div className="content-wrap center-relative">
                                 <ReactMarkdown
                                     source={this.props.post.body}
                                     renderers={{code: CodeRenderer}}
