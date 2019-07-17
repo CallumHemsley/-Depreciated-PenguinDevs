@@ -1,6 +1,7 @@
 // ./src/components/common/HomePage.js
 import React from 'react';
 import Posts from '../post/Posts';
+import {Helmet} from 'react-helmet';
 import '../css/clear.css';
 import '../css/common.css';
 import '../css/sm-clean.css';
@@ -10,6 +11,10 @@ import '../css/test.css';
 const HomePage = () => {
   return (
     <div id="content" className="site-content">
+        <Helmet>
+          <title>PenguinDevs - A Developer Blog</title>
+          <meta name="description" content="A website containing my thoughts, experiences and projects while being a developer." />
+        </Helmet>
         <div className="container">
             <header className="blog-header">
               <h1 className="blog-title">Penguin Devs</h1>

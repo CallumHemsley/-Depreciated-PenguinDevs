@@ -1,5 +1,6 @@
 // ./src/components/common/HomePage.js
 import React from 'react';
+import {Helmet} from 'react-helmet';
 import '../css/clear.css';
 import '../css/common.css';
 import '../css/sm-clean.css';
@@ -9,6 +10,10 @@ import '../css/test.css';
 const Contact = () => {
   return (
     <div id="content" className="site-content center-relative">
+        <Helmet>
+          <title>PenguinDevs - Contact Page</title>
+          <meta name="description" content="Here contains my social medias, etc to contact me." />
+        </Helmet>
         <div className="single-post-wrapper content-1070 center-relative">
             <article className="center-relative">
                 <div className="post-info content-660 center-relative">

@@ -47,15 +47,13 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
         self.session.query(Post).filter(by_id).update({'views': Post.views + 1})
         post = self.session.query(Post).filter(by_id).first()
         if post:
-            #post.views += 1
+            post.views += 1
             
             #self.session.commit()
             #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
             if(type(post.image) == bytes):
                 post.image = base64.encodestring(post.image)
                 post.image = post.image.decode('utf-8')
-            else:
-                return post
             return post
         else:
             abort(404, message="Post {} doesn't exist".format(post_id)) 
