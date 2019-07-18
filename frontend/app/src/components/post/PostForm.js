@@ -98,13 +98,13 @@ class PostForm extends Component  {
     }
 }
 
-PostForm.PropTypes = {
+export default PostForm;
+
+PostForm.propTypes = {
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string
 }
 
-PostForm.defaultprops = {
+PostForm.defaultProps = {
     value: ''
 }
-
-export default PostForm;
