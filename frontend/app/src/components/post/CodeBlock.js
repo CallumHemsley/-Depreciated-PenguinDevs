@@ -2,7 +2,7 @@ const React = require('react')
 const PropTypes = require('prop-types')
 const hljs = window.hljs
 
-class CodeBlock extends React.PureComponent {
+export default class CodeBlock extends React.PureComponent {
   constructor(props) {
     super(props)
     this.setRef = this.setRef.bind(this)
@@ -43,5 +43,3 @@ CodeBlock.propTypes = {
   value: PropTypes.string.isRequired,
   language: PropTypes.string
 }
-
-module.exports = CodeBlock
