@@ -58,7 +58,7 @@ const NavBar = () => {
                             </li>
                             <li className="nav-item">
                                 {
-                                    (isAuthenticated)   ? ( <button className="nav-link" onClick={this.logout.bind(this)}>Log out </button> ) : ( '' )
+                                    (isAuthenticated)   ? ( <button className="nav-link" onClick={() => logout() }>Log out </button> ) : ( '' )
                                 }
                             </li>
 

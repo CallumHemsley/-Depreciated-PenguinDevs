@@ -5,6 +5,7 @@ import App from './App';
 import { Auth0Provider } from "./utils/auth-wrapper";
 import config from "./auth_config.json";
 import { history, store } from './store/configureStore';
+import { BrowserRouter } from 'react-router-dom';
 //Stlying for later.
 //import 'bootstrap/dist/css/bootstrap.css';
 //import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -28,11 +29,13 @@ ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
     client_id={config.clientId}
-    redirect_uri={window.location.origin+'/callback'}
+    redirect_uri={window.location.origin}
     onRedirectCallback={onRedirectCallback}>
     <Provider store={store}>
-      <App history={history}>
-      </App> 
+      <BrowserRouter>
+        <App history={history}>
+        </App> 
+      </BrowserRouter>
     </Provider>
   </Auth0Provider>,
   document.getElementById('root')
