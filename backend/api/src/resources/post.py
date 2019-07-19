@@ -47,10 +47,10 @@ class PostResource(Resource): #resource contains all the shit u need to get, pos
 
         post = self.session.query(Post).filter(by_id).first()
         if post:
-            self.session.query(Post).filter(by_id).update({'views': Post.views + 1}) #This isn't working, why?
-            #post.views += 1
+            #self.session.query(Post).filter(by_id).update({'views': Post.views + 1}) #This isn't working, why?
+            post.views = post.views + 1
             
-            #self.session.commit()
+            self.session.commit()
             #check if its bytes because it might already be converted (kept in cache say if page is reloaded and request instantly sent again)
             if(type(post.image) == bytes):
                 post.image = base64.encodestring(post.image)
